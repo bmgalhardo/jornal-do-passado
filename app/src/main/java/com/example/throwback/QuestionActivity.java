@@ -2,10 +2,8 @@ package com.example.throwback;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.NumberPicker;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,7 +31,7 @@ public class QuestionActivity extends AppCompatActivity {
         databaseHandler = new DatabaseHandler(this);
         number_help = 0;
 
-        Headline headline = databaseHandler.get_random_headlines().get(0);
+        Headline headline = databaseHandler.getRandomHeadlines().get(0);
         correctYear = Integer.parseInt(headline.getDate().split("-")[0]);
         question = headline.getHeadline();
         questionTextField.setText(headline.getHeadline());
@@ -63,7 +61,7 @@ public class QuestionActivity extends AppCompatActivity {
 
         number_help++;
 
-        List<Headline> helpHeadlines = databaseHandler.get_news_by_year(correctYear, 1);
+        List<Headline> helpHeadlines = databaseHandler.getNewsByYear(correctYear, 1);
         TextView questionTextField = (TextView) findViewById(R.id.question);
         questionTextField.setText(helpHeadlines.get(0).getHeadline());
         question = helpHeadlines.get(0).getHeadline();

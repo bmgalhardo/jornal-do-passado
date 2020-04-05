@@ -105,7 +105,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return headlineCollection;
     }
 
-    public List<Headline> get_random_headlines(){
+    public List<Headline> getRandomHeadlines(){
         //String query = String.format("Select %s, %s, %s from %s ORDER BY RANDOM() LIMIT 1;",
         //COLUMN_HEADLINE, COLUMN_ULR, COLUMN_DATE, TABLE_NAME);
 
@@ -126,7 +126,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return headlines;
     }
 
-    public List<Headline> get_news_by_year(int year, int limit) {
+    public List<Headline> getNewsByYear(int year, int limit) {
         //String query = String.format("Select %s, %s, %s from %s ORDER BY RANDOM() LIMIT 1;",
         //COLUMN_HEADLINE, COLUMN_ULR, COLUMN_DATE, TABLE_NAME);
         String whereClause = COLUMN_DATE + " LIKE ?";
