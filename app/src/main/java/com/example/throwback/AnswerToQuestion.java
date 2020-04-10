@@ -17,15 +17,25 @@ public class AnswerToQuestion extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        int guessYear = intent.getIntExtra(QuestionActivity.QUESTION_GUESS_YEAR, 0);
+        String guessYearStr = intent.getStringExtra(QuestionActivity.QUESTION_GUESS_YEAR);
         int correctYear = intent.getIntExtra(QuestionActivity.QUESTION_CORRECT_YEAR, 0);
         String question = intent.getStringExtra(QuestionActivity.QUESTION);
 
+        Integer guessYear = null;
+        if (guessYearStr != null && guessYearStr.length() > 0) {
+            guessYear = Integer.parseInt(guessYearStr);
+            if (guessYear == correctYear) {
+                MainActivity.NUMBER_CORRECT_ANSWERS++;
+            }
+        }
         TextView viewQuestion = findViewById(R.id.question_repeated);
         viewQuestion.setText(question);
 
         TextView viewGuessYear = findViewById(R.id.yearAnswered);
-        viewGuessYear.setText(Integer.toString(guessYear));
+
+        if (guessYear != null) {
+            viewGuessYear.setText(guessYearStr);
+        }
 
         TextView viewCorrectYear = findViewById(R.id.yearCorrect);
         viewCorrectYear.setText(Integer.toString(correctYear));

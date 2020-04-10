@@ -41,16 +41,12 @@ public class QuestionActivity extends AppCompatActivity {
     public void guessYear(View view) {
 
         EditText editText = findViewById(R.id.guessTheYear);
-        int yearGuessed = Integer.parseInt(editText.getText().toString());
 
         MainActivity.TOTAL_ANSWERS++;
 
-        if (yearGuessed == correctYear){
-            MainActivity.NUMBER_CORRECT_ANSWERS++;
-        }
         Intent intent = new Intent(this, AnswerToQuestion.class);
         intent.putExtra(QUESTION, question);
-        intent.putExtra(QUESTION_GUESS_YEAR, yearGuessed);
+        intent.putExtra(QUESTION_GUESS_YEAR, editText.getText().toString());
         intent.putExtra(QUESTION_CORRECT_YEAR, correctYear);
 
         startActivity(intent);
