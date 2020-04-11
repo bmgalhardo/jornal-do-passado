@@ -4,12 +4,12 @@
     <string name="start_game">Start Game</string>
     <string name="about_game">About</string>
     <string name="guess_the_year">Year</string>
-    <string name="guess_button">Guess!</string>
+    <string name="guess_button">Responder</string>
     <string name="correct_year">Correct:</string>
     <string name="guessed_year">Guess:</string>
     <string name="total_answers">Total Answers:</string>
     <string name="correct_answers">Correct Answers:</string>
     <string name="end_game">Game Ended!</string>
-    <string name="help_button">HELP!!!</string>
+    <string name="help_button">Outra Noticia</string>
     <string name="no_answer">No Answer!</string>
 </resources>

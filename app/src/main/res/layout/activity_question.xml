@@ -2,51 +2,101 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/vintage1"
     tools:context=".QuestionActivity">
 
+    <View
+        android:layout_width="2dp"
+        android:layout_height="400dp"
+        android:background="@color/black_vintage"
+        app:layout_constraintBottom_toBottomOf="@+id/question3"
+        app:layout_constraintEnd_toStartOf="@+id/question2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/question1" />
+
+    <View
+        android:layout_width="2dp"
+        android:layout_height="400dp"
+        android:background="@color/black_vintage"
+        app:layout_constraintBottom_toBottomOf="@+id/question3"
+        app:layout_constraintEnd_toStartOf="@+id/yearStart_plus7"
+        app:layout_constraintHorizontal_bias="0.932"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline4"/>
+
+    <View
+        android:layout_width="230dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="4dp"
+        android:background="@color/black_vintage"
+        app:layout_constraintBottom_toTopOf="@+id/question2"
+        app:layout_constraintStart_toStartOf="@+id/question1"
+        app:layout_constraintTop_toBottomOf="@+id/question1"
+        app:layout_constraintVertical_bias="0.3" />
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="230dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="4dp"
+        android:background="@color/black_vintage"
+        app:layout_constraintBottom_toTopOf="@+id/question3"
+        app:layout_constraintStart_toStartOf="@+id/question2"
+        app:layout_constraintTop_toBottomOf="@+id/question2"
+        app:layout_constraintVertical_bias="0.3" />
+
+    <com.lukelorusso.verticalseekbar.VerticalSeekBar
+        android:id="@+id/yearBar"
+        android:layout_width="100dp"
+        android:layout_height="510dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/yearStart_plus0"
+        app:vsb_bar_background="#ffffff"
+        app:vsb_bar_progress="#ffffff"
+        app:vsb_progress="50"
+        app:vsb_show_thumb="false" />
+
     <TextView
-        android:id="@+id/question"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="98dp"
-        android:layout_marginEnd="32dp"
+        android:id="@+id/question1"
+        android:layout_width="230dp"
+        android:layout_height="120dp"
         android:text="TextView"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/black_vintage"
+        android:fontFamily="@font/times"
+        app:layout_constraintEnd_toStartOf="@+id/yearStart_plus16"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/yearBar" />
 
-    <EditText
-        android:id="@+id/guessTheYear"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="70dp"
-        android:layout_marginEnd="100dp"
-        android:ems="10"
-        android:hint="@string/guess_the_year"
-        android:inputType="number"
+    <TextView
+        android:id="@+id/question2"
+        android:layout_width="230dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="16dp"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/black_vintage"
+        app:layout_constraintEnd_toStartOf="@+id/yearStart_plus16"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/question" />
+        app:layout_constraintTop_toBottomOf="@+id/question1" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="161dp"
-        android:layout_marginTop="84dp"
-        android:layout_marginEnd="162dp"
-        android:onClick="guessYear"
-        android:text="@string/guess_button"
+
+    <TextView
+        android:id="@+id/question3"
+        android:layout_width="230dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="16dp"
+        android:text="Duis varius id ligula vel aliquet. Aenean malesuada ipsum blandit urna tristique accumsan."
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/black_vintage"
+        app:layout_constraintEnd_toStartOf="@+id/yearStart_plus16"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/guessTheYear" />
+        app:layout_constraintTop_toBottomOf="@+id/question2" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -60,19 +110,255 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="20dp" />
+        app:layout_constraintGuide_begin="23dp" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="161dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="162dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/oldnewspapertypes"
         android:onClick="getHelp"
         android:text="@string/help_button"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/yearStart_plus16"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/question3" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:onClick="guessYear"
+        android:text="@string/guess_button"
+        android:textSize="24sp"
+        android:fontFamily="@font/oldnewspapertypes"
+        app:layout_constraintBottom_toBottomOf="@+id/yearBar"
+        app:layout_constraintEnd_toStartOf="@+id/yearStart_plus16"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button2"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/yearStart_plus0"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="1999"
+        android:fontFamily="@font/oldnewspapertypes"
+        android:textColor="@color/black_vintage"
+        android:background="@color/vintage1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline4" />
+
+
+    <TextView
+        android:id="@+id/yearStart_plus1"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:text="1999"
+        android:fontFamily="@font/oldnewspapertypes"
+        android:textColor="@color/black_vintage"
+        android:background="@color/vintage1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/yearStart_plus0" />
+
+
+    <TextView
+        android:id="@+id/yearStart_plus2"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:text="1999"
+        android:fontFamily="@font/oldnewspapertypes"
+        android:textColor="@color/black_vintage"
+        android:background="@color/vintage1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/yearStart_plus1" />
+
+
+    <TextView
+        android:id="@+id/yearStart_plus3"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:text="1999"
+        android:fontFamily="@font/oldnewspapertypes"
+        android:textColor="@color/black_vintage"
+        android:background="@color/vintage1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/yearStart_plus2" />
+
+
+    <TextView
+        android:id="@+id/yearStart_plus4"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:text="1999"
+        android:fontFamily="@font/oldnewspapertypes"
+        android:textColor="@color/black_vintage"
+        android:background="@color/vintage1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/yearStart_plus3" />
+
+
+    <TextView
+        android:id="@+id/yearStart_plus5"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:text="1999"
+        android:fontFamily="@font/oldnewspapertypes"
+        android:textColor="@color/black_vintage"
+        android:background="@color/vintage1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/yearStart_plus4" />
+
+
+    <TextView
+        android:id="@+id/yearStart_plus6"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:text="1999"
+        android:fontFamily="@font/oldnewspapertypes"
+        android:textColor="@color/black_vintage"
+        android:background="@color/vintage1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/yearStart_plus5" />
+
+
+    <TextView
+        android:id="@+id/yearStart_plus7"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:text="1999"
+        android:fontFamily="@font/oldnewspapertypes"
+        android:textColor="@color/black_vintage"
+        android:background="@color/vintage1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/yearStart_plus6" />
+
+
+    <TextView
+        android:id="@+id/yearStart_plus8"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:text="1999"
+        android:fontFamily="@font/oldnewspapertypes"
+        android:textColor="@color/black_vintage"
+        android:background="@color/vintage1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/yearStart_plus7" />
+
+
+    <TextView
+        android:id="@+id/yearStart_plus9"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:text="1999"
+        android:fontFamily="@font/oldnewspapertypes"
+        android:textColor="@color/black_vintage"
+        android:background="@color/vintage1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/yearStart_plus8" />
+
+
+    <TextView
+        android:id="@+id/yearStart_plus10"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:text="1999"
+        android:fontFamily="@font/oldnewspapertypes"
+        android:textColor="@color/black_vintage"
+        android:background="@color/vintage1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/yearStart_plus9" />
+
+
+    <TextView
+        android:id="@+id/yearStart_plus11"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:text="1999"
+        android:fontFamily="@font/oldnewspapertypes"
+        android:textColor="@color/black_vintage"
+        android:background="@color/vintage1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/yearStart_plus10" />
+
+
+    <TextView
+        android:id="@+id/yearStart_plus12"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:text="1999"
+        android:fontFamily="@font/oldnewspapertypes"
+        android:textColor="@color/black_vintage"
+        android:background="@color/vintage1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/yearStart_plus11" />
+
+
+    <TextView
+        android:id="@+id/yearStart_plus13"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:text="1999"
+        android:fontFamily="@font/oldnewspapertypes"
+        android:textColor="@color/black_vintage"
+        android:background="@color/vintage1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/yearStart_plus12" />
+
+
+    <TextView
+        android:id="@+id/yearStart_plus14"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:text="1999"
+        android:fontFamily="@font/oldnewspapertypes"
+        android:textColor="@color/black_vintage"
+        android:background="@color/vintage1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/yearStart_plus13" />
+
+
+    <TextView
+        android:id="@+id/yearStart_plus15"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:text="1999"
+        android:fontFamily="@font/oldnewspapertypes"
+        android:textColor="@color/black_vintage"
+        android:background="@color/vintage1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/yearStart_plus14" />
+
+
+    <TextView
+        android:id="@+id/yearStart_plus16"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:text="1999"
+        android:fontFamily="@font/oldnewspapertypes"
+        android:textColor="@color/black_vintage"
+        android:background="@color/vintage1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/yearStart_plus15" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
