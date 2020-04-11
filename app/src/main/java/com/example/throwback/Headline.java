@@ -6,17 +6,31 @@ public class Headline {
     private String headline;
     private String url;
     private String date;
+    private int year;
+    private int month;
+    private int day;
 
-    public Headline(int id, String headline, String url, String date){
+    public Headline(int id, String headline, String url, String date, int year, int month, int day) {
         this.id = id;
         this.headline = headline;
         this.url = url;
         this.date = date;
+        this.year = year;
+        this.month = month;
+        this.day = day;
     }
-    public Headline(String headline, String url, String date){
+
+    public Headline(String headline, String url, String date, int year, int month, int day) {
         this.headline = headline;
         this.url = url;
         this.date = date;
+        this.year = year;
+        this.month = month;
+        this.day = day;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getHeadline() {
@@ -31,7 +45,15 @@ public class Headline {
         return date;
     }
 
-    public int getId() {
-        return id;
+    public int getYear() {
+        return year;
+    }
+
+    public int getMonth() {
+        return month;
+    }
+
+    public int getDay() {
+        return day;
     }
 }

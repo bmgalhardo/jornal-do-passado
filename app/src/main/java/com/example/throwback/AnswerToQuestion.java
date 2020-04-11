@@ -19,7 +19,7 @@ public class AnswerToQuestion extends AppCompatActivity {
 
         String guessYearStr = intent.getStringExtra(QuestionActivity.QUESTION_GUESS_YEAR);
         int correctYear = intent.getIntExtra(QuestionActivity.QUESTION_CORRECT_YEAR, 0);
-        String question = intent.getStringExtra(QuestionActivity.QUESTION);
+        String question = intent.getStringExtra(QuestionActivity.QUESTION_FIELD);
 
         Integer guessYear = null;
         if (guessYearStr != null && guessYearStr.length() > 0) {

@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.lukelorusso.verticalseekbar.VerticalSeekBar;
 
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
@@ -18,16 +19,26 @@ import kotlin.jvm.functions.Function1;
 
 public class QuestionActivity extends AppCompatActivity {
 
-    public static final String QUESTION = "com.example.throwback.question";
+    public static final String QUESTION_FIELD = "com.example.throwback.question";
     public static final String QUESTION_CORRECT_YEAR = "com.example.throwback.correctYear";
     public static final String QUESTION_GUESS_YEAR = "com.example.throwback.guessYear";
 
-    public static int correctYear;
-    public static String question;
-    public int number_help;
-    public DatabaseHandler databaseHandler;
+    public static final int NUMBER_MAXIMUM_HELP = 3;
+    public static final Integer[] TEXT_FIELDS_QUESTIONS = {R.id.question1, R.id.question2,
+            R.id.question3};
+
     public static int YEAR_OPTIONS = 17;
-    public static int CURRENT_YEAR = 2020;
+
+    public static int MIN_YEAR = 2001;
+    public static int MAX_YEAR = 2019;
+
+
+    public static int CORRECT_YEAR;
+    private List<Headline> headlinesSelected;
+
+    public int number_help = 0;
+    public DatabaseHandler databaseHandler;
+
 
     public String yearGuess;
 
@@ -35,35 +46,41 @@ public class QuestionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
-        TextView questionTextField = findViewById(R.id.question1);
-        TextView questionTextField2 = findViewById(R.id.question2);
-        TextView questionTextField3 = findViewById(R.id.question3);
-//        findViewById(R.id.question2).setVisibility(View.INVISIBLE);
-//        findViewById(R.id.question3).setVisibility(View.INVISIBLE);
-//        findViewById(R.id.view2).setVisibility(View.INVISIBLE);
-
-        applyBlurMaskFilter(questionTextField2, BlurMaskFilter.Blur.NORMAL);
-        applyBlurMaskFilter(questionTextField3, BlurMaskFilter.Blur.NORMAL);
 
         databaseHandler = new DatabaseHandler(this);
-        number_help = 0;
 
-        Headline headline = databaseHandler.getRandomHeadlines().get(0);
-        correctYear = Integer.parseInt(headline.getDate().split("-")[0]);
-        question = headline.getHeadline();
-        questionTextField.setText(headline.getHeadline());
+        // Get random year between the min and max
+        CORRECT_YEAR = ThreadLocalRandom.current().nextInt(MIN_YEAR, MAX_YEAR + 1);
+
+        headlinesSelected = databaseHandler.getNewsByYear(CORRECT_YEAR, NUMBER_MAXIMUM_HELP);
+
+        // Fill all the questions
+        for (int i = 0; i < NUMBER_MAXIMUM_HELP; i++) {
+            TextView questionTextField = findViewById(TEXT_FIELDS_QUESTIONS[i]);
+            questionTextField.setText(headlinesSelected.get(i).getHeadline());
+
+            // Blur all help questions except the first one
+
+            if (i > 0){
+                applyBlurMaskFilter(questionTextField, BlurMaskFilter.Blur.NORMAL);
+            }
+        }
+
 
         //fill year bar
         int randomInt = (int) (YEAR_OPTIONS * Math.random());
-        int startyear = correctYear - randomInt;
+        int startYear = CORRECT_YEAR - randomInt;
 
         // check if none in future
-        if (startyear > CURRENT_YEAR - YEAR_OPTIONS) startyear = CURRENT_YEAR - YEAR_OPTIONS;
+        if (startYear > MAX_YEAR - YEAR_OPTIONS) startYear = MAX_YEAR - YEAR_OPTIONS;
+
+        // check if none before 2000
+        if (startYear < MIN_YEAR) startYear = MIN_YEAR;
 
         // fill question possible years
         for (int i = 0; i < YEAR_OPTIONS; i++) {
             TextView year_plus = findViewById(getResources().getIdentifier("yearStart_plus" + Integer.toString(i), "id", getPackageName()));
-            year_plus.setText(Integer.toString(startyear + i));
+            year_plus.setText(Integer.toString(startYear + i));
         }
 
         VerticalSeekBar yearBar = findViewById(R.id.yearBar);
@@ -73,9 +90,10 @@ public class QuestionActivity extends AppCompatActivity {
         final int colorSigma0 = getResources().getColor(R.color.colorSigma0);
         final int colorSigma1 = getResources().getColor(R.color.colorSigma1);
         final int colorSigma2 = getResources().getColor(R.color.colorSigma2);
-        final int colorback = getResources().getColor(R.color.vintage1);
+        final int colorback = getResources().getColor(R.color.background);
+        final int colorTry = getResources().getColor(R.color.tries);
 
-        final int finalStartyear = startyear;
+        final int finalStartyear = startYear;
         yearBar.setOnProgressChangeListener(new Function1<Integer, Unit>() {
             @Override
             public Unit invoke(Integer integer) {
@@ -84,18 +102,17 @@ public class QuestionActivity extends AppCompatActivity {
                 else progress_to_date = (int) Math.floor((100.0 - integer) * YEAR_OPTIONS / 100.0);
                 yearGuess = Integer.toString(progress_to_date + finalStartyear); // updates guess
 //                hintBox.setHint(Integer.toString(progress_to_date + finalStartyear));
-                // update text boxes
                 for (int i = 0; i < YEAR_OPTIONS; i++) {
                     TextView textBox = findViewById(getResources().getIdentifier("yearStart_plus" + Integer.toString(i), "id", getPackageName()));
-                    if (i == progress_to_date) textBox.setBackgroundColor(colorSigma0);
-                    else if (i < progress_to_date && i > progress_to_date - 2)
-                        textBox.setBackgroundColor(colorSigma1);
-                    else if (i > progress_to_date && i < progress_to_date + 2)
-                        textBox.setBackgroundColor(colorSigma1);
-                    else if (i < progress_to_date && i > progress_to_date - 5)
-                        textBox.setBackgroundColor(colorSigma2);
-                    else if (i > progress_to_date && i < progress_to_date + 5)
-                        textBox.setBackgroundColor(colorSigma2);
+                    if (i == progress_to_date) textBox.setBackgroundColor(colorTry);
+//                    else if (i < progress_to_date && i > progress_to_date - 2)
+//                        textBox.setBackgroundColor(colorSigma1);
+//                    else if (i > progress_to_date && i < progress_to_date + 2)
+//                        textBox.setBackgroundColor(colorSigma1);
+//                    else if (i < progress_to_date && i > progress_to_date - 5)
+//                        textBox.setBackgroundColor(colorSigma2);
+//                    else if (i > progress_to_date && i < progress_to_date + 5)
+//                        textBox.setBackgroundColor(colorSigma2);
                     else textBox.setBackgroundColor(colorback);
                 }
                 return null;
@@ -104,44 +121,33 @@ public class QuestionActivity extends AppCompatActivity {
     }
 
     /**
-     * Called when the user taps the Start Game button
+     * Called when the user taps the guess button
      */
     public void guessYear(View view) {
 
-//        EditText editText = findViewById(R.id.guessTheYear);
+        TextView textView = findViewById(R.id.question1);
 
         MainActivity.TOTAL_ANSWERS++;
 
         Intent intent = new Intent(this, AnswerToQuestion.class);
-        intent.putExtra(QUESTION, question);
+        intent.putExtra(QUESTION_FIELD, textView.getText().toString());
         intent.putExtra(QUESTION_GUESS_YEAR, yearGuess);
-        intent.putExtra(QUESTION_CORRECT_YEAR, correctYear);
+        intent.putExtra(QUESTION_CORRECT_YEAR, CORRECT_YEAR);
 
         startActivity(intent);
 
     }
 
+
     public void getHelp(View view) {
 
         number_help++;
+        TextView questionTextField = (TextView) findViewById(TEXT_FIELDS_QUESTIONS[number_help]);
+        // FIXME: The line below should not exist
+        questionTextField.setText(headlinesSelected.get(number_help).getHeadline());
+        questionTextField.getPaint().setMaskFilter(null);
 
-        List<Headline> helpHeadlines = databaseHandler.getNewsByYear(correctYear, 1);
-        // TODO mudar martelo (ver questao da question)
-        if (number_help == 1) {
-            TextView questionTextField = (TextView) findViewById(R.id.question2);
-            questionTextField.setText(helpHeadlines.get(0).getHeadline());
-            questionTextField.getPaint().setMaskFilter(null);
-//            findViewById(R.id.question2).setVisibility(View.VISIBLE);
-        } else if (number_help == 2) {
-            TextView questionTextField = (TextView) findViewById(R.id.question3);
-            questionTextField.setText(helpHeadlines.get(0).getHeadline());
-            questionTextField.getPaint().setMaskFilter(null);
-//            findViewById(R.id.question3).setVisibility(View.VISIBLE);
-//            findViewById(R.id.view2).setVisibility(View.VISIBLE);
-        }
-        question = helpHeadlines.get(0).getHeadline();
-
-        if (number_help == MainActivity.NUMBER_MAXIMUM_HELP) {
+        if (number_help == NUMBER_MAXIMUM_HELP - 1) {
             view.setVisibility(View.INVISIBLE);
         }
     }
@@ -162,5 +168,6 @@ public class QuestionActivity extends AppCompatActivity {
 
         // Finally, apply the blur effect on TextView text
         tv.getPaint().setMaskFilter(filter);
+
     }
 }
