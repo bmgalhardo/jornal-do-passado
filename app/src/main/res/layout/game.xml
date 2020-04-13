@@ -76,6 +76,7 @@
         app:layout_constraintStart_toEndOf="@+id/level5"
         app:layout_constraintTop_toTopOf="@+id/guideline12"
         app:layout_constraintVertical_bias="0.0" />
+
     <View
         android:id="@+id/level7"
         android:layout_width="0dp"
@@ -128,61 +129,83 @@
         android:id="@+id/view"
         android:layout_width="2dp"
         android:layout_height="0dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:background="@color/text"
-        app:layout_constraintBottom_toBottomOf="@+id/question3"
-        app:layout_constraintEnd_toStartOf="@+id/question2"
-        app:layout_constraintTop_toTopOf="@+id/question1"
+        app:layout_constraintBottom_toBottomOf="@+id/questionBoxes"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="@+id/questionBoxes"
         app:layout_constraintVertical_bias="0.0" />
 
     <View
         android:id="@+id/view2"
         android:layout_width="2dp"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:background="@color/text"
-        app:layout_constraintBottom_toBottomOf="@+id/question3"
-        app:layout_constraintStart_toEndOf="@+id/question2"
-        app:layout_constraintTop_toTopOf="@+id/question1"
+        app:layout_constraintBottom_toBottomOf="@+id/questionBoxes"
+        app:layout_constraintEnd_toStartOf="@+id/guideline13"
+        app:layout_constraintTop_toTopOf="@+id/questionBoxes"
         app:layout_constraintVertical_bias="0.0" />
 
 
-    <TextView
-        android:id="@+id/question1"
-        android:layout_width="230dp"
+    <LinearLayout
+        android:id="@+id/questionBoxes"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="TextView"
-        android:textColor="@color/text"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline10"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/guideline8"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/question2"
-        android:layout_width="230dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:text="TextView"
-        android:textColor="@color/text"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline11"
-        app:layout_constraintStart_toStartOf="@+id/question1"
-        app:layout_constraintTop_toBottomOf="@+id/question1" />
-
-    <TextView
-        android:id="@+id/question3"
-        android:layout_width="230dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="24dp"
-        android:text="TextView"
-        android:textColor="@color/text"
-        android:textSize="18sp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/guideline7"
-        app:layout_constraintStart_toStartOf="@+id/question2"
-        app:layout_constraintTop_toTopOf="@+id/guideline11" />
+        app:layout_constraintEnd_toStartOf="@+id/view2"
+        app:layout_constraintStart_toEndOf="@+id/view"
+        app:layout_constraintTop_toTopOf="@+id/guideline8">
+
+        <TextView
+            android:id="@+id/question1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="TextView"
+            android:textColor="@color/text"
+            android:textSize="18sp" />
+
+        <View
+            android:id="@+id/viewHoriz1"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/text"
+            />
+
+        <TextView
+            android:id="@+id/question2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:text="TextView"
+            android:textColor="@color/text"
+            android:textSize="18sp" />
+
+        <View
+            android:id="@+id/viewHoriz2"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/text"
+            />
+
+
+        <TextView
+            android:id="@+id/question3"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:text="TextView"
+            android:textColor="@color/text"
+            android:textSize="18sp" />
+    </LinearLayout>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -203,39 +226,38 @@
         android:id="@+id/buttonHelp"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:fontFamily="@font/oldnewspapertypes"
         android:onClick="getHelp"
         android:text="@string/help_button"
         app:layout_constraintBaseline_toBaselineOf="@+id/buttonGuessYear"
-        app:layout_constraintEnd_toEndOf="@+id/question3"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/buttonGuessYear" />
 
     <Button
         android:id="@+id/buttonGuessYear"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="32dp"
         android:fontFamily="@font/oldnewspapertypes"
         android:onClick="guessYear"
         android:text="@string/guess_button"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/question3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/questionBoxes"
         app:layout_constraintTop_toTopOf="@+id/guideline7" />
 
     <FrameLayout
         android:id="@+id/frameSlider"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
         android:layout_marginBottom="16dp"
         android:layout_weight="1"
         android:background="#fff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/question2"
+        app:layout_constraintStart_toStartOf="@+id/guideline13"
         app:layout_constraintTop_toTopOf="@+id/guideline8">
 
         <com.lukelorusso.verticalseekbar.VerticalSeekBar
@@ -490,7 +512,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.7906977" />
+        app:layout_constraintGuide_percent="0.87" />
 
     <Button
         android:id="@+id/buttonNextQuestion"
@@ -500,7 +522,6 @@
         android:text="@string/next_question"
         android:visibility="invisible"
         app:layout_constraintBaseline_toBaselineOf="@+id/buttonGuessYear"
-        app:layout_constraintEnd_toEndOf="@+id/buttonGuessYear"
         app:layout_constraintStart_toStartOf="@+id/buttonGuessYear" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -509,22 +530,6 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="51dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="227dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.31053352"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.55" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline12"
@@ -554,6 +559,13 @@
         app:layout_constraintEnd_toEndOf="@+id/frameSlider"
         app:layout_constraintTop_toTopOf="@+id/guideline12"
         app:layout_constraintVertical_bias="1.0" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.7" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

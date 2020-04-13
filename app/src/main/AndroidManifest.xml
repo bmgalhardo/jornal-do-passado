@@ -9,8 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FinalGameStatistics"></activity>
-        <activity android:name=".AnswerToQuestion" />
+        <activity android:name=".ScoreBoardActivity"></activity>
         <activity android:name=".GameActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

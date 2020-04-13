@@ -1,6 +1,8 @@
 package com.example.throwback;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -31,6 +33,11 @@ public class GameActivity extends AppCompatActivity {
     public static int MIN_YEAR = 2001;
     public static int MAX_YEAR = 2020;
 
+    public static int NUMBER_CORRECT_ANSWERS;
+    public static int TOTAL_ANSWERS;
+    public static int CURRENT_LEVEL;
+    public static int CURRENT_POINTS;
+
     public static int CORRECT_YEAR;
     private List<Headline> headlinesSelected;
 
@@ -44,7 +51,12 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.game_activity);
+        setContentView(R.layout.game);
+
+        NUMBER_CORRECT_ANSWERS = 0;
+        TOTAL_ANSWERS = 0;
+        CURRENT_LEVEL = 0;
+        CURRENT_POINTS = 0;
 
         databaseHandler = new DatabaseHandler(this);
 
@@ -59,7 +71,7 @@ public class GameActivity extends AppCompatActivity {
         final int yearOptions = yearBoxes.getChildCount();
         final int colorback = getResources().getColor(R.color.background);
 
-
+        // Added listener to the bar
         yearBar.setOnProgressChangeListener(new Function1<Integer, Unit>() {
             @Override
             public Unit invoke(Integer integer) {
@@ -115,14 +127,14 @@ public class GameActivity extends AppCompatActivity {
         headlinesSelected = databaseHandler.getNewsByYear(CORRECT_YEAR, NUMBER_MAXIMUM_HELP);
 
         // updates level and points
-        MainActivity.CURRENT_LEVEL++;
-        for (int i = 1; i < MainActivity.CURRENT_LEVEL; i++) {
+        CURRENT_LEVEL++;
+        for (int i = 1; i < CURRENT_LEVEL; i++) {
             String level_i = "level" + i;
             View level_square = findViewById(getResources().getIdentifier(level_i, "id", getPackageName()));
             level_square.setBackgroundColor(getResources().getColor(R.color.colorAccent));
         }
         TextView points = findViewById(R.id.points);
-        points.setText("Score: " + Integer.toString(MainActivity.CURRENT_POINTS));
+        points.setText("Score: " + Integer.toString(CURRENT_POINTS));
 
         // Fill all the questions
         for (int i = 0; i < NUMBER_MAXIMUM_HELP; i++) {
@@ -171,7 +183,7 @@ public class GameActivity extends AppCompatActivity {
         Button buttonHelp = findViewById(R.id.buttonHelp);
         buttonHelp.setVisibility(View.INVISIBLE);
 
-        MainActivity.TOTAL_ANSWERS++;
+        TOTAL_ANSWERS++;
 
         // disable seekbar
         VerticalSeekBar yearBar = findViewById(R.id.yearBar);
@@ -221,7 +233,22 @@ public class GameActivity extends AppCompatActivity {
                 else thisYearBox.setBackgroundColor(colorback);
             }
         }
-        MainActivity.CURRENT_POINTS += thisPoints;
+        CURRENT_POINTS += thisPoints;
+
+        if (TOTAL_ANSWERS == 11){
+
+            buttonNextQuestion.setVisibility(View.INVISIBLE);
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Intent i = new Intent(GameActivity.this, ScoreBoardActivity.class);
+                    startActivity(i);
+                    finish();
+                }
+            }, MainActivity.TIME_SHOW_FINAL_ANSWER);
+
+        }
     }
 
     public void getNextQuestion(View view){
