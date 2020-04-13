@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.graphics.BlurMaskFilter;
 
@@ -29,11 +31,8 @@ public class QuestionActivity extends AppCompatActivity {
     public static final Integer[] TEXT_FIELDS_QUESTIONS = {R.id.question1, R.id.question2,
             R.id.question3};
 
-    public static int YEAR_OPTIONS = 17;
-
     public static int MIN_YEAR = 2001;
     public static int MAX_YEAR = 2019;
-
 
     public static int CORRECT_YEAR;
     private List<Headline> headlinesSelected;
@@ -73,23 +72,26 @@ public class QuestionActivity extends AppCompatActivity {
             }
         }
 
+        // get year boxes
+        final ViewGroup yearBoxes = findViewById(R.id.yearBoxes);
+        final int yearOptions = yearBoxes.getChildCount();
 
         //fill year bar
-        int randomInt = (int) (YEAR_OPTIONS * Math.random());
+        int randomInt = (int) (yearOptions * Math.random());
         startYear = CORRECT_YEAR - randomInt;
 
         // check if none in future
-        if (startYear > MAX_YEAR - YEAR_OPTIONS) startYear = MAX_YEAR - YEAR_OPTIONS;
+        if (startYear > MAX_YEAR - yearOptions) startYear = MAX_YEAR - yearOptions;
 
         // check if none before 2000
         if (startYear < MIN_YEAR) startYear = MIN_YEAR;
 
-        // TODO: Solve this hardcoded rule. Now all TextViews are inside the parent, therefore one can have access to it bu index of the parent children.
-        for (int i = 0; i < YEAR_OPTIONS; i++) {
-            TextView year_plus = findViewById(getResources().getIdentifier("yearStart_plus" + Integer.toString(i), "id", getPackageName()));
-            year_plus.setText(Integer.toString(startYear + i));
+        for (int i = 0; i < yearOptions; i++) {
+            TextView thisYearBox = (TextView) yearBoxes.getChildAt(i);
+            thisYearBox.setText(Integer.toString(startYear + i));
         }
 
+        // Add behaviour to seekbar
         VerticalSeekBar yearBar = findViewById(R.id.yearBar);
 
         final int colorback = getResources().getColor(R.color.background);
@@ -101,14 +103,14 @@ public class QuestionActivity extends AppCompatActivity {
 
                 int progress_to_date;
 
-                if (integer == 0) progress_to_date = YEAR_OPTIONS - 1;
-                else progress_to_date = (int) Math.floor((100.0 - integer) * YEAR_OPTIONS / 100.0);
+                if (integer == 0) progress_to_date = yearOptions - 1;
+                else progress_to_date = (int) Math.floor((100.0 - integer) * yearOptions / 100.0);
                 yearGuess = progress_to_date + startYear; // updates guess
 
-                for (int i = 0; i < YEAR_OPTIONS; i++) {
-                    TextView textBox = findViewById(getResources().getIdentifier("yearStart_plus" + Integer.toString(i), "id", getPackageName()));
-                    if (i == progress_to_date) textBox.setBackgroundColor(colorTry);
-                    else textBox.setBackgroundColor(colorback);
+                for (int i = 0; i < yearOptions; i++) {
+                    TextView thisYearBox = (TextView) yearBoxes.getChildAt(i);
+                    if (i == progress_to_date) thisYearBox.setBackgroundColor(colorTry);
+                    else thisYearBox.setBackgroundColor(colorback);
                 }
                 return null;
             }
@@ -131,28 +133,30 @@ public class QuestionActivity extends AppCompatActivity {
 
         MainActivity.TOTAL_ANSWERS++;
 
-//        Intent intent = new Intent(this, AnswerToQuestion.class);
-//        intent.putExtra(QUESTION_FIELD, textView.getText().toString());
-//        intent.putExtra(QUESTION_GUESS_YEAR, yearGuess);
-//        intent.putExtra(QUESTION_CORRECT_YEAR, CORRECT_YEAR);
-//
-//        startActivity(intent);
+        // disable seekbar
+        VerticalSeekBar yearBar = findViewById(R.id.yearBar);
+        yearBar.setUseThumbToSetProgress(false);
+        yearBar.setClickToSetProgress(false);
+
+        // get year boxes
+        final ViewGroup yearBoxes = findViewById(R.id.yearBoxes);
+        final int yearOptions = yearBoxes.getChildCount();
 
         final int colorback = getResources().getColor(R.color.background);
         final int colorSigma1 = getResources().getColor(R.color.colorSigma1);
         final int colorSigma2 = getResources().getColor(R.color.colorSigma2);
 
-        for (int i = 0; i < YEAR_OPTIONS; i++) {
-            TextView textBox = findViewById(getResources().getIdentifier("yearStart_plus" + Integer.toString(i), "id", getPackageName()));
+        for (int i = 0; i < yearOptions; i++) {
+            TextView thisYearBox = (TextView) yearBoxes.getChildAt(i);
             int thisYear =  i + startYear;
-            if (thisYear == yearGuess && yearGuess == CORRECT_YEAR) textBox.setBackgroundColor(Color.GREEN);
-            else if (thisYear == yearGuess) textBox.setBackgroundColor(Color.RED);
-            else if (thisYear == CORRECT_YEAR) textBox.setBackgroundColor(Color.GREEN);
-            else if (thisYear < CORRECT_YEAR && thisYear > CORRECT_YEAR - 2) textBox.setBackgroundColor(colorSigma1);
-            else if (thisYear > CORRECT_YEAR && thisYear < CORRECT_YEAR + 2) textBox.setBackgroundColor(colorSigma1);
-            else if (thisYear < CORRECT_YEAR && thisYear > CORRECT_YEAR - 5) textBox.setBackgroundColor(colorSigma2);
-            else if (thisYear > CORRECT_YEAR && thisYear < CORRECT_YEAR + 5) textBox.setBackgroundColor(colorSigma2);
-            else textBox.setBackgroundColor(colorback);
+            if (thisYear == yearGuess && yearGuess == CORRECT_YEAR) thisYearBox.setBackgroundColor(Color.GREEN);
+            else if (thisYear == yearGuess) thisYearBox.setBackgroundColor(Color.RED);
+            else if (thisYear == CORRECT_YEAR) thisYearBox.setBackgroundColor(Color.GREEN);
+            else if (thisYear < CORRECT_YEAR && thisYear > CORRECT_YEAR - 2) thisYearBox.setBackgroundColor(colorSigma1);
+            else if (thisYear > CORRECT_YEAR && thisYear < CORRECT_YEAR + 2) thisYearBox.setBackgroundColor(colorSigma1);
+            else if (thisYear < CORRECT_YEAR && thisYear > CORRECT_YEAR - 5) thisYearBox.setBackgroundColor(colorSigma2);
+            else if (thisYear > CORRECT_YEAR && thisYear < CORRECT_YEAR + 5) thisYearBox.setBackgroundColor(colorSigma2);
+            else thisYearBox.setBackgroundColor(colorback);
         }
     }
 
@@ -179,7 +183,7 @@ public class QuestionActivity extends AppCompatActivity {
     protected void applyBlurMaskFilter(TextView tv, BlurMaskFilter.Blur style) {
 
         // Define the blur effect radius
-        float radius = tv.getTextSize() / 3;
+        float radius = tv.getTextSize() / 2;
 
         // Initialize a new BlurMaskFilter instance
         BlurMaskFilter filter = new BlurMaskFilter(radius, style);
