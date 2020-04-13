@@ -10,6 +10,7 @@
     <string name="total_answers">Total Answers:</string>
     <string name="correct_answers">Correct Answers:</string>
     <string name="end_game">Game Ended!</string>
-    <string name="help_button">Outra Noticia</string>
+    <string name="help_button">Ajuda</string>
     <string name="no_answer">No Answer!</string>
+    <string name="next_question">Próxima</string>
 </resources>

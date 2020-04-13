@@ -8,94 +8,68 @@
     tools:context=".QuestionActivity">
 
     <View
+        android:id="@+id/view"
         android:layout_width="2dp"
-        android:layout_height="400dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
         android:background="@color/text"
         app:layout_constraintBottom_toBottomOf="@+id/question3"
         app:layout_constraintEnd_toStartOf="@+id/question2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/question1" />
-
-    <View
-        android:layout_width="2dp"
-        android:layout_height="400dp"
-        android:background="@color/text"
-        app:layout_constraintBottom_toBottomOf="@+id/question3"
-        app:layout_constraintEnd_toStartOf="@+id/yearStart_plus7"
-        app:layout_constraintHorizontal_bias="0.932"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline4"/>
-
-    <View
-        android:layout_width="230dp"
-        android:layout_height="2dp"
-        android:layout_marginTop="4dp"
-        android:background="@color/text"
-        app:layout_constraintBottom_toTopOf="@+id/question2"
-        app:layout_constraintStart_toStartOf="@+id/question1"
-        app:layout_constraintTop_toBottomOf="@+id/question1"
-        app:layout_constraintVertical_bias="0.3" />
+        app:layout_constraintTop_toTopOf="@+id/question1"
+        app:layout_constraintVertical_bias="0.0" />
 
     <View
         android:id="@+id/view2"
-        android:layout_width="230dp"
-        android:layout_height="2dp"
-        android:layout_marginTop="4dp"
+        android:layout_width="2dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
         android:background="@color/text"
-        app:layout_constraintBottom_toTopOf="@+id/question3"
-        app:layout_constraintStart_toStartOf="@+id/question2"
-        app:layout_constraintTop_toBottomOf="@+id/question2"
-        app:layout_constraintVertical_bias="0.3" />
+        app:layout_constraintBottom_toBottomOf="@+id/question3"
+        app:layout_constraintStart_toEndOf="@+id/question2"
+        app:layout_constraintTop_toTopOf="@+id/question1"
+        app:layout_constraintVertical_bias="0.0" />
 
-    <com.lukelorusso.verticalseekbar.VerticalSeekBar
-        android:id="@+id/yearBar"
-        android:layout_width="100dp"
-        android:layout_height="510dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/yearStart_plus0"
-        app:vsb_bar_background="#ffffff"
-        app:vsb_bar_progress="#ffffff"
-        app:vsb_progress="50"
-        app:vsb_show_thumb="false" />
 
     <TextView
         android:id="@+id/question1"
         android:layout_width="230dp"
-        android:layout_height="120dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="8dp"
         android:text="TextView"
-        android:textSize="24sp"
         android:textColor="@color/text"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline10"
         app:layout_constraintEnd_toStartOf="@+id/yearStart_plus16"
-        app:layout_constraintHorizontal_bias="0.487"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/yearBar" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="@+id/guideline4"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/question2"
         android:layout_width="230dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="16dp"
-        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-        android:textSize="24sp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
         android:textColor="@color/text"
-        app:layout_constraintEnd_toStartOf="@+id/yearStart_plus16"
-        app:layout_constraintHorizontal_bias="0.487"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline11"
+        app:layout_constraintStart_toStartOf="@+id/question1"
         app:layout_constraintTop_toBottomOf="@+id/question1" />
-
 
     <TextView
         android:id="@+id/question3"
         android:layout_width="230dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="16dp"
-        android:text="Duis varius id ligula vel aliquet. Aenean malesuada ipsum blandit urna tristique accumsan."
-        android:textSize="24sp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="24dp"
+        android:text="TextView"
         android:textColor="@color/text"
-        app:layout_constraintEnd_toStartOf="@+id/yearStart_plus16"
-        app:layout_constraintHorizontal_bias="0.487"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/question2" />
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline7"
+        app:layout_constraintStart_toStartOf="@+id/question2"
+        app:layout_constraintTop_toTopOf="@+id/guideline11" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -109,255 +83,339 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="23dp" />
+        app:layout_constraintGuide_percent="0.03146375" />
+
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonHelp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
         android:fontFamily="@font/oldnewspapertypes"
         android:onClick="getHelp"
         android:text="@string/help_button"
-        app:layout_constraintEnd_toStartOf="@+id/yearStart_plus16"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/question3" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/buttonGuessYear"
+        app:layout_constraintEnd_toEndOf="@+id/question3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/buttonGuessYear" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonGuessYear"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/oldnewspapertypes"
         android:onClick="guessYear"
         android:text="@string/guess_button"
-        android:textSize="24sp"
-        android:fontFamily="@font/oldnewspapertypes"
-        app:layout_constraintBottom_toBottomOf="@+id/yearBar"
-        app:layout_constraintEnd_toStartOf="@+id/yearStart_plus16"
-        app:layout_constraintHorizontal_bias="0.516"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2"
-        app:layout_constraintVertical_bias="1.0" />
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/question3"
+        app:layout_constraintTop_toTopOf="@+id/guideline7" />
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#fff"
+        app:layout_constraintBottom_toBottomOf="@+id/yearStart_plus16"
+        app:layout_constraintEnd_toEndOf="@+id/yearStart_plus0"
+        app:layout_constraintStart_toStartOf="@+id/yearStart_plus0"
+        app:layout_constraintTop_toTopOf="@+id/yearStart_plus0">
+
+        <com.lukelorusso.verticalseekbar.VerticalSeekBar
+            android:id="@+id/yearBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:vsb_bar_background="#ffffff"
+            app:vsb_bar_progress="#ffffff"
+            app:vsb_progress="50"
+            app:vsb_show_thumb="false" />
+
+    </FrameLayout>
 
     <TextView
         android:id="@+id/yearStart_plus0"
         android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="20dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/background"
+        android:fontFamily="@font/oldnewspapertypes"
         android:gravity="center"
         android:text="1999"
-        android:fontFamily="@font/oldnewspapertypes"
         android:textColor="@color/text"
-        android:background="@color/background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline4" />
+        android:textSize="20sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/question1"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/yearStart_plus1"
+            android:layout_width="100dp"
+            android:layout_height="0dp"
+            android:background="@color/background"
+            android:fontFamily="@font/oldnewspapertypes"
+            android:gravity="center"
+            android:text="1999"
+            android:textColor="@color/text"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/yearStart_plus0"
+            app:layout_constraintTop_toBottomOf="@+id/yearStart_plus0" />
 
 
-    <TextView
-        android:id="@+id/yearStart_plus1"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:gravity="center"
-        android:text="1999"
-        android:fontFamily="@font/oldnewspapertypes"
-        android:textColor="@color/text"
-        android:background="@color/background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/yearStart_plus0" />
+        <TextView
+            android:id="@+id/yearStart_plus2"
+            android:layout_width="100dp"
+            android:layout_height="0dp"
+            android:background="@color/background"
+            android:fontFamily="@font/oldnewspapertypes"
+            android:gravity="center"
+            android:text="1999"
+            android:textColor="@color/text"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/yearStart_plus1"
+            app:layout_constraintTop_toBottomOf="@+id/yearStart_plus1" />
 
 
-    <TextView
-        android:id="@+id/yearStart_plus2"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:gravity="center"
-        android:text="1999"
-        android:fontFamily="@font/oldnewspapertypes"
-        android:textColor="@color/text"
-        android:background="@color/background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/yearStart_plus1" />
+        <TextView
+            android:id="@+id/yearStart_plus3"
+            android:layout_width="100dp"
+            android:layout_height="0dp"
+            android:background="@color/background"
+            android:fontFamily="@font/oldnewspapertypes"
+            android:gravity="center"
+            android:text="1999"
+            android:textColor="@color/text"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/yearStart_plus2"
+            app:layout_constraintTop_toBottomOf="@+id/yearStart_plus2" />
 
 
-    <TextView
-        android:id="@+id/yearStart_plus3"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:gravity="center"
-        android:text="1999"
-        android:fontFamily="@font/oldnewspapertypes"
-        android:textColor="@color/text"
-        android:background="@color/background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/yearStart_plus2" />
+        <TextView
+            android:id="@+id/yearStart_plus4"
+            android:layout_width="100dp"
+            android:layout_height="0dp"
+            android:background="@color/background"
+            android:fontFamily="@font/oldnewspapertypes"
+            android:gravity="center"
+            android:text="1999"
+            android:textColor="@color/text"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/yearStart_plus3"
+            app:layout_constraintTop_toBottomOf="@+id/yearStart_plus3" />
 
 
-    <TextView
-        android:id="@+id/yearStart_plus4"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:gravity="center"
-        android:text="1999"
-        android:fontFamily="@font/oldnewspapertypes"
-        android:textColor="@color/text"
-        android:background="@color/background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/yearStart_plus3" />
+        <TextView
+            android:id="@+id/yearStart_plus5"
+            android:layout_width="100dp"
+            android:layout_height="0dp"
+            android:background="@color/background"
+            android:fontFamily="@font/oldnewspapertypes"
+            android:gravity="center"
+            android:text="1999"
+            android:textColor="@color/text"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/yearStart_plus4"
+            app:layout_constraintTop_toBottomOf="@+id/yearStart_plus4" />
 
 
-    <TextView
-        android:id="@+id/yearStart_plus5"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:gravity="center"
-        android:text="1999"
-        android:fontFamily="@font/oldnewspapertypes"
-        android:textColor="@color/text"
-        android:background="@color/background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/yearStart_plus4" />
+        <TextView
+            android:id="@+id/yearStart_plus6"
+            android:layout_width="100dp"
+            android:layout_height="0dp"
+            android:background="@color/background"
+            android:fontFamily="@font/oldnewspapertypes"
+            android:gravity="center"
+            android:text="1999"
+            android:textColor="@color/text"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/yearStart_plus5"
+            app:layout_constraintTop_toBottomOf="@+id/yearStart_plus5" />
 
 
-    <TextView
-        android:id="@+id/yearStart_plus6"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:gravity="center"
-        android:text="1999"
-        android:fontFamily="@font/oldnewspapertypes"
-        android:textColor="@color/text"
-        android:background="@color/background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/yearStart_plus5" />
+        <TextView
+            android:id="@+id/yearStart_plus7"
+            android:layout_width="100dp"
+            android:layout_height="0dp"
+            android:background="@color/background"
+            android:fontFamily="@font/oldnewspapertypes"
+            android:gravity="center"
+            android:text="1999"
+            android:textColor="@color/text"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/yearStart_plus6"
+            app:layout_constraintTop_toBottomOf="@+id/yearStart_plus6" />
 
 
-    <TextView
-        android:id="@+id/yearStart_plus7"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:gravity="center"
-        android:text="1999"
-        android:fontFamily="@font/oldnewspapertypes"
-        android:textColor="@color/text"
-        android:background="@color/background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/yearStart_plus6" />
+        <TextView
+            android:id="@+id/yearStart_plus8"
+            android:layout_width="100dp"
+            android:layout_height="0dp"
+            android:background="@color/background"
+            android:fontFamily="@font/oldnewspapertypes"
+            android:gravity="center"
+            android:text="1999"
+            android:textColor="@color/text"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/yearStart_plus7"
+            app:layout_constraintTop_toBottomOf="@+id/yearStart_plus7" />
 
 
-    <TextView
-        android:id="@+id/yearStart_plus8"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:gravity="center"
-        android:text="1999"
-        android:fontFamily="@font/oldnewspapertypes"
-        android:textColor="@color/text"
-        android:background="@color/background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/yearStart_plus7" />
+        <TextView
+            android:id="@+id/yearStart_plus9"
+            android:layout_width="100dp"
+            android:layout_height="0dp"
+            android:background="@color/background"
+            android:fontFamily="@font/oldnewspapertypes"
+            android:gravity="center"
+            android:text="1999"
+            android:textColor="@color/text"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/yearStart_plus8"
+            app:layout_constraintTop_toBottomOf="@+id/yearStart_plus8" />
 
 
-    <TextView
-        android:id="@+id/yearStart_plus9"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:gravity="center"
-        android:text="1999"
-        android:fontFamily="@font/oldnewspapertypes"
-        android:textColor="@color/text"
-        android:background="@color/background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/yearStart_plus8" />
+        <TextView
+            android:id="@+id/yearStart_plus10"
+            android:layout_width="100dp"
+            android:layout_height="0dp"
+            android:background="@color/background"
+            android:fontFamily="@font/oldnewspapertypes"
+            android:gravity="center"
+            android:text="1999"
+            android:textColor="@color/text"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/yearStart_plus9"
+            app:layout_constraintTop_toBottomOf="@+id/yearStart_plus9" />
 
 
-    <TextView
-        android:id="@+id/yearStart_plus10"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:gravity="center"
-        android:text="1999"
-        android:fontFamily="@font/oldnewspapertypes"
-        android:textColor="@color/text"
-        android:background="@color/background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/yearStart_plus9" />
+        <TextView
+            android:id="@+id/yearStart_plus11"
+            android:layout_width="100dp"
+            android:layout_height="0dp"
+            android:background="@color/background"
+            android:fontFamily="@font/oldnewspapertypes"
+            android:gravity="center"
+            android:text="1999"
+            android:textColor="@color/text"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/yearStart_plus10"
+            app:layout_constraintTop_toBottomOf="@+id/yearStart_plus10" />
 
 
-    <TextView
-        android:id="@+id/yearStart_plus11"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:gravity="center"
-        android:text="1999"
-        android:fontFamily="@font/oldnewspapertypes"
-        android:textColor="@color/text"
-        android:background="@color/background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/yearStart_plus10" />
+        <TextView
+            android:id="@+id/yearStart_plus12"
+            android:layout_width="100dp"
+            android:layout_height="0dp"
+            android:background="@color/background"
+            android:fontFamily="@font/oldnewspapertypes"
+            android:gravity="center"
+            android:text="1999"
+            android:textColor="@color/text"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/yearStart_plus11"
+            app:layout_constraintTop_toBottomOf="@+id/yearStart_plus11" />
 
 
-    <TextView
-        android:id="@+id/yearStart_plus12"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:gravity="center"
-        android:text="1999"
-        android:fontFamily="@font/oldnewspapertypes"
-        android:textColor="@color/text"
-        android:background="@color/background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/yearStart_plus11" />
+        <TextView
+            android:id="@+id/yearStart_plus13"
+            android:layout_width="100dp"
+            android:layout_height="0dp"
+            android:background="@color/background"
+            android:fontFamily="@font/oldnewspapertypes"
+            android:gravity="center"
+            android:text="1999"
+            android:textColor="@color/text"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/yearStart_plus12"
+            app:layout_constraintTop_toBottomOf="@+id/yearStart_plus12" />
 
 
-    <TextView
-        android:id="@+id/yearStart_plus13"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:gravity="center"
-        android:text="1999"
-        android:fontFamily="@font/oldnewspapertypes"
-        android:textColor="@color/text"
-        android:background="@color/background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/yearStart_plus12" />
+        <TextView
+            android:id="@+id/yearStart_plus14"
+            android:layout_width="100dp"
+            android:layout_height="0dp"
+            android:background="@color/background"
+            android:fontFamily="@font/oldnewspapertypes"
+            android:gravity="center"
+            android:text="1999"
+            android:textColor="@color/text"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/yearStart_plus13"
+            app:layout_constraintTop_toBottomOf="@+id/yearStart_plus13" />
 
 
-    <TextView
-        android:id="@+id/yearStart_plus14"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:gravity="center"
-        android:text="1999"
-        android:fontFamily="@font/oldnewspapertypes"
-        android:textColor="@color/text"
-        android:background="@color/background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/yearStart_plus13" />
+        <TextView
+            android:id="@+id/yearStart_plus15"
+            android:layout_width="100dp"
+            android:layout_height="0dp"
+            android:background="@color/background"
+            android:fontFamily="@font/oldnewspapertypes"
+            android:gravity="center"
+            android:text="1999"
+            android:textColor="@color/text"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/yearStart_plus14"
+            app:layout_constraintTop_toBottomOf="@+id/yearStart_plus14" />
 
 
-    <TextView
-        android:id="@+id/yearStart_plus15"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:gravity="center"
-        android:text="1999"
-        android:fontFamily="@font/oldnewspapertypes"
-        android:textColor="@color/text"
-        android:background="@color/background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/yearStart_plus14" />
+        <TextView
+            android:id="@+id/yearStart_plus16"
+            android:layout_width="100dp"
+            android:layout_height="0dp"
+            android:background="@color/background"
+            android:fontFamily="@font/oldnewspapertypes"
+            android:gravity="center"
+            android:text="1999"
+            android:textColor="@color/text"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/yearStart_plus15"
+            app:layout_constraintTop_toBottomOf="@+id/yearStart_plus15" />
 
+x
 
-    <TextView
-        android:id="@+id/yearStart_plus16"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:gravity="center"
-        android:text="1999"
-        android:fontFamily="@font/oldnewspapertypes"
-        android:textColor="@color/text"
-        android:background="@color/background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/yearStart_plus15" />
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="left" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.7906977" />
+
+    <Button
+        android:id="@+id/buttonNextQuestion"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:onClick="getNextQuestion"
+        android:text="@string/next_question"
+        android:visibility="invisible"
+        app:layout_constraintBaseline_toBaselineOf="@+id/buttonGuessYear"
+        app:layout_constraintEnd_toEndOf="@+id/buttonGuessYear"
+        app:layout_constraintStart_toStartOf="@+id/buttonGuessYear" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.07" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="227dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.31053352"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.55" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
