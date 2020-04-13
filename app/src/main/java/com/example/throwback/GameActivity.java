@@ -44,7 +44,6 @@ public class GameActivity extends AppCompatActivity {
     public int number_help;
     public DatabaseHandler databaseHandler;
 
-
     public int yearGuess;
     public int startYear;
 
@@ -61,7 +60,6 @@ public class GameActivity extends AppCompatActivity {
         databaseHandler = new DatabaseHandler(this);
 
         number_help = 0;
-
 
         final int colorTry = getResources().getColor(R.color.tries);
 
@@ -103,9 +101,6 @@ public class GameActivity extends AppCompatActivity {
         Button buttonNextQuestion = findViewById(R.id.buttonNextQuestion);
         buttonNextQuestion.setVisibility(View.INVISIBLE);
 
-        Button buttonHelp = findViewById(R.id.buttonHelp);
-        buttonHelp.setVisibility(View.VISIBLE);
-
         // disable seekbar
         VerticalSeekBar yearBar = findViewById(R.id.yearBar);
         yearBar.setUseThumbToSetProgress(true);
@@ -124,7 +119,8 @@ public class GameActivity extends AppCompatActivity {
         // Get random year between the min and max
         CORRECT_YEAR = MIN_YEAR + (int) ((MAX_YEAR - MIN_YEAR) * Math.random());
 
-        headlinesSelected = databaseHandler.getNewsByYear(CORRECT_YEAR, NUMBER_MAXIMUM_HELP);
+        int numberQuestions = TEXT_FIELDS_QUESTIONS.length;
+        headlinesSelected = databaseHandler.getNewsByYear(CORRECT_YEAR, numberQuestions);
 
         // updates level and points
         CURRENT_LEVEL++;
@@ -133,11 +129,12 @@ public class GameActivity extends AppCompatActivity {
             View level_square = findViewById(getResources().getIdentifier(level_i, "id", getPackageName()));
             level_square.setBackgroundColor(getResources().getColor(R.color.colorAccent));
         }
+
         TextView points = findViewById(R.id.points);
         points.setText("Score: " + Integer.toString(CURRENT_POINTS));
 
         // Fill all the questions
-        for (int i = 0; i < NUMBER_MAXIMUM_HELP; i++) {
+        for (int i = 0; i < numberQuestions; i++) {
 
             TextView questionTextField = findViewById(TEXT_FIELDS_QUESTIONS[i]);
 
@@ -145,11 +142,6 @@ public class GameActivity extends AppCompatActivity {
             questionTextField.setText(headlinesSelected.get(i).getHeadline());
             TextViewCompat.setAutoSizeTextTypeWithDefaults(questionTextField,
                     TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM);
-
-            // Blur all help questions except the first one
-            if (i > 0){
-                applyBlurMaskFilter(questionTextField, BlurMaskFilter.Blur.NORMAL);
-            }
         }
 
         //fill year bar
@@ -179,9 +171,6 @@ public class GameActivity extends AppCompatActivity {
 
         Button buttonNextQuestion = findViewById(R.id.buttonNextQuestion);
         buttonNextQuestion.setVisibility(View.VISIBLE);
-
-        Button buttonHelp = findViewById(R.id.buttonHelp);
-        buttonHelp.setVisibility(View.INVISIBLE);
 
         TOTAL_ANSWERS++;
 
@@ -254,19 +243,6 @@ public class GameActivity extends AppCompatActivity {
     public void getNextQuestion(View view){
         number_help = 0;
         fillWithNewQuestion();
-    }
-
-    public void getHelp(View view) {
-
-        number_help++;
-        TextView questionTextField = (TextView) findViewById(TEXT_FIELDS_QUESTIONS[number_help]);
-        // FIXME: The line below should not exist
-        questionTextField.setText(headlinesSelected.get(number_help).getHeadline());
-        questionTextField.getPaint().setMaskFilter(null);
-
-        if (number_help == NUMBER_MAXIMUM_HELP - 1) {
-            view.setVisibility(View.INVISIBLE);
-        }
     }
 
     // Custom method to apply BlurMaskFilter to a TextView text
