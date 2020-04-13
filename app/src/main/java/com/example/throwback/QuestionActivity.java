@@ -84,7 +84,7 @@ public class QuestionActivity extends AppCompatActivity {
         // check if none before 2000
         if (startYear < MIN_YEAR) startYear = MIN_YEAR;
 
-        // fill question possible years
+        // TODO: Solve this hardcoded rule. Now all TextViews are inside the parent, therefore one can have access to it bu index of the parent children.
         for (int i = 0; i < YEAR_OPTIONS; i++) {
             TextView year_plus = findViewById(getResources().getIdentifier("yearStart_plus" + Integer.toString(i), "id", getPackageName()));
             year_plus.setText(Integer.toString(startYear + i));
