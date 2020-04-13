@@ -17,9 +17,9 @@ public class AnswerToQuestion extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        String guessYearStr = intent.getStringExtra(QuestionActivity.QUESTION_GUESS_YEAR);
-        int correctYear = intent.getIntExtra(QuestionActivity.QUESTION_CORRECT_YEAR, 0);
-        String question = intent.getStringExtra(QuestionActivity.QUESTION_FIELD);
+        String guessYearStr = intent.getStringExtra(GameActivity.QUESTION_GUESS_YEAR);
+        int correctYear = intent.getIntExtra(GameActivity.QUESTION_CORRECT_YEAR, 0);
+        String question = intent.getStringExtra(GameActivity.QUESTION_FIELD);
 
         Integer guessYear = null;
         if (guessYearStr != null && guessYearStr.length() > 0) {
@@ -52,7 +52,7 @@ public class AnswerToQuestion extends AppCompatActivity {
             public void run() {
                 Intent i;
                 if (MainActivity.TOTAL_ANSWERS < MainActivity.TOTAL_NUMBER_QUESTIONS_PER_GAME) {
-                    i = new Intent(AnswerToQuestion.this, QuestionActivity.class);
+                    i = new Intent(AnswerToQuestion.this, GameActivity.class);
                 }
                 else {
                     i = new Intent(AnswerToQuestion.this, FinalGameStatistics.class);

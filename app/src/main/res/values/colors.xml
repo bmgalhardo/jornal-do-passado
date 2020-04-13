@@ -3,9 +3,12 @@
     <color name="colorPrimary">#AEAEAE</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#6E6E6E</color>
-    <color name="colorSigma2">#E1D5B78B</color>
-    <color name="colorSigma1">#97D5B74A</color>
-    <color name="colorSigma0">#4FD5B74A</color>
+    <color name="colorSigma2">#1A03FE00</color>
+    <color name="colorSigma1">#4D03FE00</color>
+    <color name="colorSigma0">#B303FE00</color>
+    <color name="colorSigma2_select">#1A044018</color>
+    <color name="colorSigma1_select">#4D044018</color>
+    <color name="colorSigma0_select">#B3044018</color>
     <color name="background">#FFFFFF</color>
     <color name="text">#000000</color>
     <color name="tries">#939393</color>

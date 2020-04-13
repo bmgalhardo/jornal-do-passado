@@ -14,6 +14,8 @@ public class MainActivity extends AppCompatActivity {
 
     public static int NUMBER_CORRECT_ANSWERS;
     public static int TOTAL_ANSWERS;
+    public static int CURRENT_LEVEL;
+    public static int CURRENT_POINTS;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,11 +27,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         NUMBER_CORRECT_ANSWERS = 0;
         TOTAL_ANSWERS = 0;
+        CURRENT_LEVEL = 0;
+        CURRENT_POINTS = 0;
     }
 
     /** Called when the user taps the Start Game button */
     public void startGame(View view) {
-        Intent intent = new Intent(this, QuestionActivity.class);
+        Intent intent = new Intent(this, GameActivity.class);
         startActivity(intent);
     }
 }
