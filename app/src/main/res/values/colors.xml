@@ -5,11 +5,17 @@
     <color name="colorAccent">#6E6E6E</color>
     <color name="colorSigma2">#1A03FE00</color>
     <color name="colorSigma1">#4D03FE00</color>
-    <color name="colorSigma0">#B303FE00</color>
-    <color name="colorSigma2_select">#1A044018</color>
-    <color name="colorSigma1_select">#4D044018</color>
-    <color name="colorSigma0_select">#B3044018</color>
+    <color name="colorSigma0">#8003FE00</color>
+    <color name="colorSigma2_select">#B3008C06</color>
+    <color name="colorSigma1_select">#E6008C06</color>
+    <color name="colorSigma0_select">#8003FE00</color>
     <color name="background">#FFFFFF</color>
     <color name="text">#000000</color>
     <color name="tries">#939393</color>
+    <color name="g1">#FF5722</color>
+    <color name="g2">#FF9800</color>
+    <color name="g4">#FFC107</color>
+    <color name="g6">#FFEB3B</color>
+    <color name="g8">#8BC34A</color>
+    <color name="g10">#8003FE00</color>
 </resources>

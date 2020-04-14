@@ -228,7 +228,6 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
-        android:fontFamily="@font/oldnewspapertypes"
         android:onClick="guessYear"
         android:text="@string/guess_button"
         android:textSize="14sp"
@@ -273,11 +272,10 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:background="@color/background"
-                android:fontFamily="@font/oldnewspapertypes"
                 android:gravity="center"
                 android:text="1999"
                 android:textColor="@color/text"
-                android:textSize="24sp" />
+                android:textSize="22sp" />
 
             <TextView
                 android:id="@+id/yearStart_plus1"
@@ -285,11 +283,10 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:background="@color/background"
-                android:fontFamily="@font/oldnewspapertypes"
                 android:gravity="center"
                 android:text="1999"
                 android:textColor="@color/text"
-                android:textSize="24sp" />
+                android:textSize="22sp" />
 
 
             <TextView
@@ -298,11 +295,10 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:background="@color/background"
-                android:fontFamily="@font/oldnewspapertypes"
                 android:gravity="center"
                 android:text="1999"
                 android:textColor="@color/text"
-                android:textSize="24sp" />
+                android:textSize="22sp" />
 
 
             <TextView
@@ -311,11 +307,10 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:background="@color/background"
-                android:fontFamily="@font/oldnewspapertypes"
                 android:gravity="center"
                 android:text="1999"
                 android:textColor="@color/text"
-                android:textSize="24sp" />
+                android:textSize="22sp" />
 
 
             <TextView
@@ -324,11 +319,10 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:background="@color/background"
-                android:fontFamily="@font/oldnewspapertypes"
                 android:gravity="center"
                 android:text="1999"
                 android:textColor="@color/text"
-                android:textSize="24sp" />
+                android:textSize="22sp" />
 
 
             <TextView
@@ -337,11 +331,10 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:background="@color/background"
-                android:fontFamily="@font/oldnewspapertypes"
                 android:gravity="center"
                 android:text="1999"
                 android:textColor="@color/text"
-                android:textSize="24sp" />
+                android:textSize="22sp" />
 
 
             <TextView
@@ -350,11 +343,10 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:background="@color/background"
-                android:fontFamily="@font/oldnewspapertypes"
                 android:gravity="center"
                 android:text="1999"
                 android:textColor="@color/text"
-                android:textSize="24sp" />
+                android:textSize="22sp" />
 
 
             <TextView
@@ -363,11 +355,10 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:background="@color/background"
-                android:fontFamily="@font/oldnewspapertypes"
                 android:gravity="center"
                 android:text="1999"
                 android:textColor="@color/text"
-                android:textSize="24sp" />
+                android:textSize="22sp" />
 
 
             <TextView
@@ -376,11 +367,10 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:background="@color/background"
-                android:fontFamily="@font/oldnewspapertypes"
                 android:gravity="center"
                 android:text="1999"
                 android:textColor="@color/text"
-                android:textSize="24sp" />
+                android:textSize="22sp" />
 
 
             <TextView
@@ -389,11 +379,10 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:background="@color/background"
-                android:fontFamily="@font/oldnewspapertypes"
                 android:gravity="center"
                 android:text="1999"
                 android:textColor="@color/text"
-                android:textSize="24sp" />
+                android:textSize="22sp" />
 
 
             <TextView
@@ -402,11 +391,10 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:background="@color/background"
-                android:fontFamily="@font/oldnewspapertypes"
                 android:gravity="center"
                 android:text="1999"
                 android:textColor="@color/text"
-                android:textSize="24sp" />
+                android:textSize="22sp" />
 
 
             <TextView
@@ -415,11 +403,10 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:background="@color/background"
-                android:fontFamily="@font/oldnewspapertypes"
                 android:gravity="center"
                 android:text="1999"
                 android:textColor="@color/text"
-                android:textSize="24sp" />
+                android:textSize="22sp" />
 
 
             <TextView
@@ -428,11 +415,10 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:background="@color/background"
-                android:fontFamily="@font/oldnewspapertypes"
                 android:gravity="center"
                 android:text="1999"
                 android:textColor="@color/text"
-                android:textSize="24sp" />
+                android:textSize="22sp" />
 
 
             <TextView
@@ -441,11 +427,10 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:background="@color/background"
-                android:fontFamily="@font/oldnewspapertypes"
                 android:gravity="center"
                 android:text="1999"
                 android:textColor="@color/text"
-                android:textSize="24sp" />
+                android:textSize="22sp" />
 
 
             <TextView
@@ -454,11 +439,10 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:background="@color/background"
-                android:fontFamily="@font/oldnewspapertypes"
                 android:gravity="center"
                 android:text="1999"
                 android:textColor="@color/text"
-                android:textSize="24sp" />
+                android:textSize="22sp" />
 
 
             <TextView
@@ -467,11 +451,10 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:background="@color/background"
-                android:fontFamily="@font/oldnewspapertypes"
                 android:gravity="center"
                 android:text="1999"
                 android:textColor="@color/text"
-                android:textSize="24sp" />
+                android:textSize="22sp" />
 
 
             <TextView
@@ -480,11 +463,10 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:background="@color/background"
-                android:fontFamily="@font/oldnewspapertypes"
                 android:gravity="center"
                 android:text="1999"
                 android:textColor="@color/text"
-                android:textSize="24sp" />
+                android:textSize="22sp" />
 
         </LinearLayout>
 

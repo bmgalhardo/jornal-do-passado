@@ -47,6 +47,9 @@ public class GameActivity extends AppCompatActivity {
     public int yearGuess;
     public int startYear;
 
+    public int gameType = 1; // 0 normal game, 1 gauntlet
+    public int gauntletLevel = 10;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,9 +94,16 @@ public class GameActivity extends AppCompatActivity {
 
         fillWithNewQuestion();
 
+        if (gameType == 1) for (int i = 1; i <= 10; i++) {
+            String level_i = "level" + i;
+            View level_square = findViewById(getResources().getIdentifier(level_i, "id", getPackageName()));
+            level_square.setBackgroundColor(getResources().getColor(R.color.g10));
+        }
     }
 
     private void fillWithNewQuestion(){
+
+        CURRENT_LEVEL++;
 
         Button buttonGuessYear = findViewById(R.id.buttonGuessYear);
         buttonGuessYear.setVisibility(View.VISIBLE);
@@ -121,14 +131,6 @@ public class GameActivity extends AppCompatActivity {
 
         int numberQuestions = TEXT_FIELDS_QUESTIONS.length;
         headlinesSelected = databaseHandler.getNewsByYear(CORRECT_YEAR, numberQuestions);
-
-        // updates level and points
-        CURRENT_LEVEL++;
-        for (int i = 1; i < CURRENT_LEVEL; i++) {
-            String level_i = "level" + i;
-            View level_square = findViewById(getResources().getIdentifier(level_i, "id", getPackageName()));
-            level_square.setBackgroundColor(getResources().getColor(R.color.colorAccent));
-        }
 
         TextView points = findViewById(R.id.points);
         points.setText("Score: " + Integer.toString(CURRENT_POINTS));
@@ -192,6 +194,7 @@ public class GameActivity extends AppCompatActivity {
         final int colorSigma2_select = getResources().getColor(R.color.colorSigma2_select);
         final int tries = getResources().getColor(R.color.tries);
         int thisPoints = 0;
+        int saveColor = tries;
 
         // Assign colors to boxes and points
         for (int i = 0; i < yearOptions; i++) {
@@ -201,6 +204,7 @@ public class GameActivity extends AppCompatActivity {
                 if (thisYear == yearGuess) {
                     thisPoints = 6;
                     thisYearBox.setBackgroundColor(colorSigma0_select);
+                    saveColor = colorSigma0;
                 } else thisYearBox.setBackgroundColor(colorSigma0);
             }
             else if ((thisYear < CORRECT_YEAR && thisYear > CORRECT_YEAR - 2) ||
@@ -208,6 +212,7 @@ public class GameActivity extends AppCompatActivity {
                 if (thisYear == yearGuess) {
                     thisPoints = 3;
                     thisYearBox.setBackgroundColor(colorSigma1_select);
+                    saveColor = colorSigma1;
                 } else thisYearBox.setBackgroundColor(colorSigma1);
             }
             else if ((thisYear < CORRECT_YEAR && thisYear > CORRECT_YEAR - 5) ||
@@ -215,6 +220,7 @@ public class GameActivity extends AppCompatActivity {
                 if (thisYear == yearGuess) {
                     thisPoints = 1;
                     thisYearBox.setBackgroundColor(colorSigma2_select);
+                    saveColor = colorSigma2;
                 } else thisYearBox.setBackgroundColor(colorSigma2);
             }
             else {
@@ -222,9 +228,36 @@ public class GameActivity extends AppCompatActivity {
                 else thisYearBox.setBackgroundColor(colorback);
             }
         }
+
+        // updates level and points
+        if (gameType == 0) {
+            String level_i = "level" + CURRENT_LEVEL;
+            View level_square = findViewById(getResources().getIdentifier(level_i, "id", getPackageName()));
+            level_square.setBackgroundColor(saveColor);
+        } else {
+            if (thisPoints == 0) gauntletLevel -= 2;
+            else gauntletLevel += thisPoints;
+
+            if (gauntletLevel > 10) gauntletLevel = 10;
+
+            int col;
+            if (gauntletLevel == 10) col = getResources().getColor(R.color.g10);
+            else if (gauntletLevel > 7) col = getResources().getColor(R.color.g8);
+            else if (gauntletLevel > 5) col = getResources().getColor(R.color.g6);
+            else if (gauntletLevel > 3) col = getResources().getColor(R.color.g4);
+            else if (gauntletLevel > 1) col = getResources().getColor(R.color.g2);
+            else col = getResources().getColor(R.color.g1);
+
+            for (int i = 1; i <= 10; i++) {
+                String level_i = "level" + i;
+                View level_square = findViewById(getResources().getIdentifier(level_i, "id", getPackageName()));
+                if (i > gauntletLevel) level_square.setBackgroundResource(R.drawable.rectangle_stroke);
+                else level_square.setBackgroundColor(col);
+            }
+        }
         CURRENT_POINTS += thisPoints;
 
-        if (TOTAL_ANSWERS == 11){
+        if ((TOTAL_ANSWERS == 10 && gameType == 0) || (gauntletLevel < 1 && gameType == 1)) {
 
             buttonNextQuestion.setVisibility(View.INVISIBLE);
 
@@ -236,7 +269,6 @@ public class GameActivity extends AppCompatActivity {
                     finish();
                 }
             }, MainActivity.TIME_SHOW_FINAL_ANSWER);
-
         }
     }
 
