@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 public class ScoreBoardActivity extends AppCompatActivity {
 
+    private GameType gameType;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,11 +22,16 @@ public class ScoreBoardActivity extends AppCompatActivity {
 
         TextView viewCorrectAnswers = findViewById(R.id.finalCrrectAnswers);
         viewCorrectAnswers.setText(Integer.toString(GameActivity.NUMBER_CORRECT_ANSWERS));
+
+        Intent intent = getIntent();
+        gameType = GameType.valueOf(intent.getStringExtra(MainActivity.EXTRA_GAME_TYPE));
+
     }
 
 
     public void startNewGame(View view){
         Intent i = new Intent(this, GameActivity.class);
+        i.putExtra(MainActivity.EXTRA_GAME_TYPE, gameType.toString());
         startActivity(i);
     }
     public void backToMenu(View view){

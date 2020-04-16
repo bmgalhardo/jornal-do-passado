@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.graphics.BlurMaskFilter;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.widget.TextViewCompat;
@@ -39,6 +38,8 @@ public class GameActivity extends AppCompatActivity {
     public static int CURRENT_POINTS;
 
     public static int CORRECT_YEAR;
+
+    private GameType gameType;
     private List<Headline> headlinesSelected;
 
     public int number_help;
@@ -47,13 +48,18 @@ public class GameActivity extends AppCompatActivity {
     public int yearGuess;
     public int startYear;
 
-    public int gameType = 1; // 0 normal game, 1 gauntlet
+
     public int gauntletLevel = 10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game);
+
+        Intent intent = getIntent();
+        gameType = GameType.valueOf(intent.getStringExtra(MainActivity.EXTRA_GAME_TYPE));
+
 
         NUMBER_CORRECT_ANSWERS = 0;
         TOTAL_ANSWERS = 0;
@@ -94,7 +100,7 @@ public class GameActivity extends AppCompatActivity {
 
         fillWithNewQuestion();
 
-        if (gameType == 1) for (int i = 1; i <= 10; i++) {
+        if (gameType == GameType.SUDDEN_DEATH) for (int i = 1; i <= 10; i++) {
             String level_i = "level" + i;
             View level_square = findViewById(getResources().getIdentifier(level_i, "id", getPackageName()));
             level_square.setBackgroundColor(getResources().getColor(R.color.g10));
@@ -230,7 +236,7 @@ public class GameActivity extends AppCompatActivity {
         }
 
         // updates level and points
-        if (gameType == 0) {
+        if (gameType == GameType.DEFAULT) {
             String level_i = "level" + CURRENT_LEVEL;
             View level_square = findViewById(getResources().getIdentifier(level_i, "id", getPackageName()));
             level_square.setBackgroundColor(saveColor);
@@ -257,42 +263,30 @@ public class GameActivity extends AppCompatActivity {
         }
         CURRENT_POINTS += thisPoints;
 
-        if ((TOTAL_ANSWERS == 10 && gameType == 0) || (gauntletLevel < 1 && gameType == 1)) {
+        if ((TOTAL_ANSWERS == 10 && gameType == GameType.DEFAULT) ||
+                (gauntletLevel < 1 && gameType == GameType.SUDDEN_DEATH)) {
 
-            buttonNextQuestion.setVisibility(View.INVISIBLE);
+            buttonNextQuestion.setText("Ver Pontuação");
 
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    Intent i = new Intent(GameActivity.this, ScoreBoardActivity.class);
-                    startActivity(i);
-                    finish();
-                }
-            }, MainActivity.TIME_SHOW_FINAL_ANSWER);
+//            new Handler().postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
+//                    Intent i = new Intent(GameActivity.this, ScoreBoardActivity.class);
+//                    startActivity(i);
+//                    finish();
+//                }
+//            }, MainActivity.TIME_SHOW_FINAL_ANSWER);
         }
     }
 
     public void getNextQuestion(View view){
         number_help = 0;
-        fillWithNewQuestion();
-    }
-
-    // Custom method to apply BlurMaskFilter to a TextView text
-    // https://android--examples.blogspot.com/2015/11/how-to-use-blurmaskfilter-in-android.html
-    protected void applyBlurMaskFilter(TextView tv, BlurMaskFilter.Blur style) {
-
-        // Define the blur effect radius
-        float radius = tv.getTextSize() / 2;
-
-        // Initialize a new BlurMaskFilter instance
-        BlurMaskFilter filter = new BlurMaskFilter(radius, style);
-
-        // Set the TextView layer type
-        tv.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-
-
-        // Finally, apply the blur effect on TextView text
-        tv.getPaint().setMaskFilter(filter);
-
+        if ((TOTAL_ANSWERS == 10 && gameType == GameType.DEFAULT) ||
+                (gauntletLevel < 1 && gameType == GameType.SUDDEN_DEATH)) {
+            Intent i = new Intent(GameActivity.this, ScoreBoardActivity.class);
+            i.putExtra(MainActivity.EXTRA_GAME_TYPE, gameType.name());
+            startActivity(i);
+            finish();
+        } else fillWithNewQuestion();
     }
 }

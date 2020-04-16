@@ -14,7 +14,7 @@
         android:background="@drawable/rectangle_stroke"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintDimensionRatio="w,1:1"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="@+id/questionBoxes"
         app:layout_constraintTop_toTopOf="@+id/guideline12" />
 
     <View

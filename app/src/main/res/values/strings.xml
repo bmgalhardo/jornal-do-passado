@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Jornal do Passado</string>
     <string name="start_game">Novo Jogo</string>
+    <string name="start_game_tower">Modo Torre</string>
     <string name="about_game">Créditos</string>
     <string name="guess_button">Responder</string>
     <string name="correct_year">Correctas:</string>

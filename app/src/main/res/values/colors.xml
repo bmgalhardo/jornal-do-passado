@@ -7,8 +7,8 @@
     <color name="colorSigma1">#4D03FE00</color>
     <color name="colorSigma0">#8003FE00</color>
     <color name="colorSigma2_select">#B3008C06</color>
-    <color name="colorSigma1_select">#E6008C06</color>
-    <color name="colorSigma0_select">#8003FE00</color>
+    <color name="colorSigma1_select">#B3008C06</color>
+    <color name="colorSigma0_select">#B3008C06</color>
     <color name="background">#FFFFFF</color>
     <color name="text">#000000</color>
     <color name="tries">#939393</color>
