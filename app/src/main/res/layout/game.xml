@@ -230,7 +230,9 @@
         android:layout_marginBottom="32dp"
         android:onClick="guessYear"
         android:text="@string/guess_button"
-        android:textSize="14sp"
+        android:textSize="18sp"
+        android:textColor="#FFFFFF"
+        android:background="@color/colorButtons"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/questionBoxes"
         app:layout_constraintStart_toStartOf="@+id/questionBoxes"
@@ -489,11 +491,15 @@
         android:id="@+id/buttonNextQuestion"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="@color/colorButtons"
         android:onClick="getNextQuestion"
         android:text="@string/next_question"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
         android:visibility="invisible"
         app:layout_constraintBaseline_toBaselineOf="@+id/buttonGuessYear"
         app:layout_constraintEnd_toEndOf="@+id/buttonGuessYear"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/buttonGuessYear" />
 
     <androidx.constraintlayout.widget.Guideline

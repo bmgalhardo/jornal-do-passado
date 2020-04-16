@@ -67,8 +67,11 @@
         android:layout_width="240dp"
         android:layout_height="62dp"
         android:onClick="startGame"
-        android:text="@string/start_game"
         android:tag="DEFAULT"
+        android:text="@string/start_game"
+        android:textSize="18sp"
+        android:textColor="#FFFFFF"
+        android:background="@color/colorButtons"
         app:layout_constraintEnd_toEndOf="@+id/textView"
         app:layout_constraintStart_toStartOf="@+id/textView"
         app:layout_constraintTop_toTopOf="@+id/guideline3" />
@@ -80,11 +83,28 @@
         android:onClick="startGame"
         android:text="@string/start_game_tower"
         android:tag="SUDDEN_DEATH"
+        android:textSize="18sp"
+        android:textColor="#FFFFFF"
+        android:background="@color/colorButtons"
         app:layout_constraintBottom_toTopOf="@+id/about_game"
         app:layout_constraintEnd_toEndOf="@+id/start_game"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/start_game"
         app:layout_constraintTop_toBottomOf="@+id/start_game" />
+
+    <Button
+        android:id="@+id/about_game"
+        android:layout_width="240dp"
+        android:layout_height="62dp"
+        android:text="@string/about_game"
+        android:textSize="18sp"
+        android:textColor="#FFFFFF"
+        android:background="@color/colorButtons"
+        app:layout_constraintBottom_toTopOf="@+id/guideline5"
+        app:layout_constraintEnd_toEndOf="@+id/start_game"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/start_game" />
+
 
     <TextView
         android:id="@+id/textView"
@@ -99,16 +119,6 @@
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline6" />
-
-    <Button
-        android:id="@+id/about_game"
-        android:layout_width="240dp"
-        android:layout_height="62dp"
-        android:text="@string/about_game"
-        app:layout_constraintBottom_toTopOf="@+id/guideline5"
-        app:layout_constraintEnd_toEndOf="@+id/start_game"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/start_game" />
 
     <TextView
         android:id="@+id/textView3"
@@ -147,7 +157,13 @@
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:text=" Tempus mentem debere lor cum sacras volunt capram. Labefactat to percipitur in ac realitatem ii. Videantur admittere ibi sum eae cui corporeas. Sim nostris securum qua numerus vestiri corpora revolvo. Momenti equidem nullibi vi ut in veritas ac efficta. Credendas realitate tam curiosius sua cupientem. Existi haereo tactum sacras negans re exigui se. Ad quarta ha at ullius nequit longum an animum. Fert novo veat hoc sed. Rogo nunc quin imo etsi imo anno.   Tempus mentem debere lor cum sacras volunt capram. Labefactat to percipitur in ac realitatem ii. Videantur admittere ibi sum eae cui corporeas. Sim nostris securum qua numerus vestiri corpora revolvo. Momenti equidem nullibi vi ut in veritas ac efficta. Credendas realitate tam curiosius sua cupientem. Existi haereo tactum sacras negans re exigui se. Ad quarta ha at ullius nequit longum an animum. Fert novo veat hoc sed. Rogo nunc quin imo etsi imo anno. "
+        android:text=" Tempus mentem debere lor cum sacras volunt capram. Labefactat to percipitur in ac realitatem ii. Videantur admittere ibi sum eae cui corporeas. Sim nostris securum qua
+        numerus vestiri corpora revolvo. Momenti equidem nullibi vi ut in veritas ac efficta. Credendas realitate tam curiosius sua cupientem. Existi haereo tactum sacras negans re exigui se.
+        Ad quarta ha at ullius nequit longum an animum. Fert novo veat hoc sed. Rogo nunc quin imo etsi imo anno.   Tempus mentem debere lor cum sacras volunt capram. Labefactat to percipitur in
+        ac realitatem ii. Videantur admittere ibi sum eae cui corporeas. Sim nostris securum qua numerus vestiri corpora revolvo. Momenti equidem nullibi vi ut in veritas ac efficta. Credendas
+        realitate tam curiosius sua cupientem. Existi haereo tactum sacras negans re exigui se. Ad quarta ha at ullius nequit longum an animum. Fert novo veat hoc sed. Rogo nunc quin imo etsi imo        ac realitatem ii. Videantur admittere ibi sum eae cui corporeas. Sim nostris securum qua numerus vestiri corpora revolvo. Momenti equidem nullibi vi ut in veritas ac efficta. Credendas
+        realitate tam curiosius sua cupientem. Existi haereo tactum sacras negans re exigui se. Ad quarta ha at ullius nequit longum an animum. Fert novo veat hoc sed. Rogo nunc quin imo etsi imo
+         anno. "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/view4"
         app:layout_constraintHorizontal_bias="0.492"
@@ -160,7 +176,13 @@
         android:layout_width="75dp"
         android:layout_height="512dp"
         android:layout_marginStart="8dp"
-        android:text=" Tempus mentem debere lor cum sacras volunt capram. Labefactat to percipitur in ac realitatem ii. Videantur admittere ibi sum eae cui corporeas. Sim nostris securum qua numerus vestiri corpora revolvo. Momenti equidem nullibi vi ut in veritas ac efficta. Credendas realitate tam curiosius sua cupientem. Existi haereo tactum sacras negans re exigui se. Ad quarta ha at ullius nequit longum an animum. Fert novo veat hoc sed. Rogo nunc quin imo etsi imo anno.   Tempus mentem debere lor cum sacras volunt capram. Labefactat to percipitur in ac realitatem ii. Videantur admittere ibi sum eae cui corporeas. Sim nostris securum qua numerus vestiri corpora revolvo. Momenti equidem nullibi vi ut in veritas ac efficta. Credendas realitate tam curiosius sua cupientem. Existi haereo tactum sacras negans re exigui se. Ad quarta ha at ullius nequit longum an animum. Fert novo veat hoc sed. Rogo nunc quin imo etsi imo anno. "
+        android:text=" Tempus mentem debere lor cum sacras volunt capram. Labefactat to percipitur in ac realitatem ii. Videantur admittere ibi sum eae cui corporeas. Sim nostris securum qua
+        numerus vestiri corpora revolvo. Momenti equidem nullibi vi ut in veritas ac efficta. Credendas realitate tam curiosius sua cupientem. Existi haereo tactum sacras negans re exigui se.
+        Ad quarta ha at ullius nequit longum an animum. Fert novo veat hoc sed. Rogo nunc quin imo etsi imo anno.   Tempus mentem debere lor cum sacras volunt capram. Labefactat to percipitur in
+        ac realitatem ii. Videantur admittere ibi sum eae cui corporeas. Sim nostris securum qua numerus vestiri corpora revolvo. Momenti equidem nullibi vi ut in veritas ac efficta. Credendas
+        realitate tam curiosius sua cupientem. Existi haereo tactum sacras negans re exigui se. Ad quarta ha at ullius nequit longum an animum. Fert novo veat hoc sed. Rogo nunc quin imo etsi imo        ac realitatem ii. Videantur admittere ibi sum eae cui corporeas. Sim nostris securum qua numerus vestiri corpora revolvo. Momenti equidem nullibi vi ut in veritas ac efficta. Credendas
+        realitate tam curiosius sua cupientem. Existi haereo tactum sacras negans re exigui se. Ad quarta ha at ullius nequit longum an animum. Fert novo veat hoc sed. Rogo nunc quin imo etsi imo
+         anno. "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/view4"
         app:layout_constraintTop_toTopOf="@+id/view3"
@@ -171,7 +193,13 @@
         android:layout_width="39dp"
         android:layout_height="523dp"
         android:layout_marginEnd="8dp"
-        android:text=" Tempus mentem debere lor cum sacras volunt capram. Labefactat to percipitur in ac realitatem ii. Videantur admittere ibi sum eae cui corporeas. Sim nostris securum qua numerus vestiri corpora revolvo. Momenti equidem nullibi vi ut in veritas ac efficta. Credendas realitate tam curiosius sua cupientem. Existi haereo tactum sacras negans re exigui se. Ad quarta ha at ullius nequit longum an animum. Fert novo veat hoc sed. Rogo nunc quin imo etsi imo anno.   Tempus mentem debere lor cum sacras volunt capram. Labefactat to percipitur in ac realitatem ii. Videantur admittere ibi sum eae cui corporeas. Sim nostris securum qua numerus vestiri corpora revolvo. Momenti equidem nullibi vi ut in veritas ac efficta. Credendas realitate tam curiosius sua cupientem. Existi haereo tactum sacras negans re exigui se. Ad quarta ha at ullius nequit longum an animum. Fert novo veat hoc sed. Rogo nunc quin imo etsi imo anno. "
+        android:text=" Tempus mentem debere lor cum sacras volunt capram. Labefactat to percipitur in ac realitatem ii. Videantur admittere ibi sum eae cui corporeas. Sim nostris securum qua
+        numerus vestiri corpora revolvo. Momenti equidem nullibi vi ut in veritas ac efficta. Credendas realitate tam curiosius sua cupientem. Existi haereo tactum sacras negans re exigui se.
+        Ad quarta ha at ullius nequit longum an animum. Fert novo veat hoc sed. Rogo nunc quin imo etsi imo anno.   Tempus mentem debere lor cum sacras volunt capram. Labefactat to percipitur in
+        ac realitatem ii. Videantur admittere ibi sum eae cui corporeas. Sim nostris securum qua numerus vestiri corpora revolvo. Momenti equidem nullibi vi ut in veritas ac efficta. Credendas
+        realitate tam curiosius sua cupientem. Existi haereo tactum sacras negans re exigui se. Ad quarta ha at ullius nequit longum an animum. Fert novo veat hoc sed. Rogo nunc quin imo etsi imo        ac realitatem ii. Videantur admittere ibi sum eae cui corporeas. Sim nostris securum qua numerus vestiri corpora revolvo. Momenti equidem nullibi vi ut in veritas ac efficta. Credendas
+        realitate tam curiosius sua cupientem. Existi haereo tactum sacras negans re exigui se. Ad quarta ha at ullius nequit longum an animum. Fert novo veat hoc sed. Rogo nunc quin imo etsi imo
+         anno. "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/view3"
         app:layout_constraintTop_toTopOf="@+id/view3"

@@ -68,6 +68,8 @@
         android:onClick="startNewGame"
         android:text="@string/start_game"
         android:textSize="18sp"
+        android:textColor="#FFFFFF"
+        android:background="@color/colorButtons"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -80,7 +82,8 @@
         android:onClick="backToMenu"
         android:text="@string/menu"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/newGame"
+        android:textColor="#FFFFFF"
+        android:background="@color/colorButtons"        app:layout_constraintEnd_toEndOf="@+id/newGame"
         app:layout_constraintStart_toStartOf="@+id/newGame"
         app:layout_constraintTop_toBottomOf="@+id/newGame" />
 </androidx.constraintlayout.widget.ConstraintLayout>

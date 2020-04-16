@@ -110,6 +110,7 @@ public class GameActivity extends AppCompatActivity {
     private void fillWithNewQuestion(){
 
         CURRENT_LEVEL++;
+        yearGuess = 0;
 
         Button buttonGuessYear = findViewById(R.id.buttonGuessYear);
         buttonGuessYear.setVisibility(View.VISIBLE);
@@ -195,21 +196,20 @@ public class GameActivity extends AppCompatActivity {
         final int colorSigma0 = getResources().getColor(R.color.colorSigma0);
         final int colorSigma1 = getResources().getColor(R.color.colorSigma1);
         final int colorSigma2 = getResources().getColor(R.color.colorSigma2);
-        final int colorSigma0_select = getResources().getColor(R.color.colorSigma0_select);
-        final int colorSigma1_select = getResources().getColor(R.color.colorSigma1_select);
-        final int colorSigma2_select = getResources().getColor(R.color.colorSigma2_select);
+        final int wrong_guess = getResources().getColor(R.color.wrong_guess);
         final int tries = getResources().getColor(R.color.tries);
         int thisPoints = 0;
-        int saveColor = tries;
+        int saveColor = wrong_guess;
 
         // Assign colors to boxes and points
         for (int i = 0; i < yearOptions; i++) {
             TextView thisYearBox = (TextView) yearBoxes.getChildAt(i);
             int thisYear =  i + startYear;
+
             if (thisYear == CORRECT_YEAR) {
                 if (thisYear == yearGuess) {
                     thisPoints = 6;
-                    thisYearBox.setBackgroundColor(colorSigma0_select);
+                    thisYearBox.setBackgroundColor(tries);
                     saveColor = colorSigma0;
                 } else thisYearBox.setBackgroundColor(colorSigma0);
             }
@@ -217,7 +217,7 @@ public class GameActivity extends AppCompatActivity {
                     (thisYear > CORRECT_YEAR && thisYear < CORRECT_YEAR + 2)) {
                 if (thisYear == yearGuess) {
                     thisPoints = 3;
-                    thisYearBox.setBackgroundColor(colorSigma1_select);
+                    thisYearBox.setBackgroundColor(tries);
                     saveColor = colorSigma1;
                 } else thisYearBox.setBackgroundColor(colorSigma1);
             }
@@ -225,7 +225,7 @@ public class GameActivity extends AppCompatActivity {
                     (thisYear > CORRECT_YEAR && thisYear < CORRECT_YEAR + 5)) {
                 if (thisYear == yearGuess) {
                     thisPoints = 1;
-                    thisYearBox.setBackgroundColor(colorSigma2_select);
+                    thisYearBox.setBackgroundColor(tries);
                     saveColor = colorSigma2;
                 } else thisYearBox.setBackgroundColor(colorSigma2);
             }
