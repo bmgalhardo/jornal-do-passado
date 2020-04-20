@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.widget.TextView;
 
@@ -17,15 +16,20 @@ public class ScoreBoardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.score_board);
 
-        TextView viewTotalAnswers = findViewById(R.id.finalTotalAnswers);
-        viewTotalAnswers.setText(Integer.toString(GameActivity.TOTAL_ANSWERS));
-
-        TextView viewCorrectAnswers = findViewById(R.id.finalCrrectAnswers);
-        viewCorrectAnswers.setText(Integer.toString(GameActivity.NUMBER_CORRECT_ANSWERS));
-
         Intent intent = getIntent();
         gameType = GameType.valueOf(intent.getStringExtra(MainActivity.EXTRA_GAME_TYPE));
 
+        String gamePoints = intent.getStringExtra(GameActivity.CURRENT_POINTS_NAME);
+        String correctAnswers = intent.getStringExtra(GameActivity.CORRECT_ANSWERS_NAME);
+        String totalAnswers = intent.getStringExtra(GameActivity.TOTAL_ANSWERS_NAME);
+
+        TextView textPoints = findViewById(R.id.pontos);
+        TextView textCorrectAnswers = findViewById(R.id.finalCorrectAnswers);
+        TextView textTotalAnswers = findViewById(R.id.valueTotalAnswers);
+
+        textPoints.setText(gamePoints);
+        textCorrectAnswers.setText(correctAnswers);
+        textTotalAnswers.setText(totalAnswers);
     }
 
 

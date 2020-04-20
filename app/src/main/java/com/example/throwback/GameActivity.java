@@ -1,8 +1,8 @@
 package com.example.throwback;
 
 import android.content.Intent;
+import android.graphics.BlurMaskFilter;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -32,10 +32,10 @@ public class GameActivity extends AppCompatActivity {
     public static int MIN_YEAR = 2001;
     public static int MAX_YEAR = 2020;
 
-    public static int NUMBER_CORRECT_ANSWERS;
-    public static int TOTAL_ANSWERS;
     public static int CURRENT_LEVEL;
-    public static int CURRENT_POINTS;
+    final public static String CURRENT_POINTS_NAME = "CURRENT_POINTS_NAME";
+    final public static String CORRECT_ANSWERS_NAME = "CORRECT_ANSWERS_NAME";
+    final public static String TOTAL_ANSWERS_NAME = "TOTAL_ANSWERS_NAME";
 
     public static int CORRECT_YEAR;
 
@@ -47,7 +47,9 @@ public class GameActivity extends AppCompatActivity {
 
     public int yearGuess;
     public int startYear;
-
+    private int currentPoints;
+    private int numberCorrectAnswers;
+    private int totalAnswers;
 
     public int gauntletLevel = 10;
 
@@ -61,16 +63,18 @@ public class GameActivity extends AppCompatActivity {
         gameType = GameType.valueOf(intent.getStringExtra(MainActivity.EXTRA_GAME_TYPE));
 
 
-        NUMBER_CORRECT_ANSWERS = 0;
-        TOTAL_ANSWERS = 0;
+        numberCorrectAnswers = 0;
+        totalAnswers = 0;
         CURRENT_LEVEL = 0;
-        CURRENT_POINTS = 0;
+        currentPoints = 0;
 
         databaseHandler = new DatabaseHandler(this);
 
         number_help = 0;
 
         final int colorTry = getResources().getColor(R.color.tries);
+        TextView left_text = findViewById(R.id.left_text);
+        MainActivity.applyBlurMaskFilter(left_text, BlurMaskFilter.Blur.NORMAL);
 
         VerticalSeekBar yearBar = findViewById(R.id.yearBar);
         // get year boxes
@@ -140,7 +144,7 @@ public class GameActivity extends AppCompatActivity {
         headlinesSelected = databaseHandler.getNewsByYear(CORRECT_YEAR, numberQuestions);
 
         TextView points = findViewById(R.id.points);
-        points.setText("Score: " + Integer.toString(CURRENT_POINTS));
+        points.setText("Score: " + Integer.toString(currentPoints));
 
         // Fill all the questions
         for (int i = 0; i < numberQuestions; i++) {
@@ -152,6 +156,10 @@ public class GameActivity extends AppCompatActivity {
             TextViewCompat.setAutoSizeTextTypeWithDefaults(questionTextField,
                     TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM);
         }
+
+        //autosize left text
+        TextViewCompat.setAutoSizeTextTypeWithDefaults((TextView) findViewById(R.id.left_text),
+                TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM);
 
         //fill year bar
         int randomInt = (int) (yearOptions * Math.random());
@@ -181,7 +189,7 @@ public class GameActivity extends AppCompatActivity {
         Button buttonNextQuestion = findViewById(R.id.buttonNextQuestion);
         buttonNextQuestion.setVisibility(View.VISIBLE);
 
-        TOTAL_ANSWERS++;
+        totalAnswers++;
 
         // disable seekbar
         VerticalSeekBar yearBar = findViewById(R.id.yearBar);
@@ -211,6 +219,7 @@ public class GameActivity extends AppCompatActivity {
                     thisPoints = 6;
                     thisYearBox.setBackgroundColor(tries);
                     saveColor = colorSigma0;
+                    numberCorrectAnswers++;
                 } else thisYearBox.setBackgroundColor(colorSigma0);
             }
             else if ((thisYear < CORRECT_YEAR && thisYear > CORRECT_YEAR - 2) ||
@@ -261,9 +270,9 @@ public class GameActivity extends AppCompatActivity {
                 else level_square.setBackgroundColor(col);
             }
         }
-        CURRENT_POINTS += thisPoints;
+        currentPoints += thisPoints;
 
-        if ((TOTAL_ANSWERS == 10 && gameType == GameType.DEFAULT) ||
+        if ((totalAnswers == 10 && gameType == GameType.DEFAULT) ||
                 (gauntletLevel < 1 && gameType == GameType.SUDDEN_DEATH)) {
 
             buttonNextQuestion.setText("Ver Pontuação");
@@ -281,10 +290,13 @@ public class GameActivity extends AppCompatActivity {
 
     public void getNextQuestion(View view){
         number_help = 0;
-        if ((TOTAL_ANSWERS == 10 && gameType == GameType.DEFAULT) ||
+        if ((totalAnswers == 10 && gameType == GameType.DEFAULT) ||
                 (gauntletLevel < 1 && gameType == GameType.SUDDEN_DEATH)) {
             Intent i = new Intent(GameActivity.this, ScoreBoardActivity.class);
             i.putExtra(MainActivity.EXTRA_GAME_TYPE, gameType.name());
+            i.putExtra(CURRENT_POINTS_NAME, Integer.toString(currentPoints));
+            i.putExtra(TOTAL_ANSWERS_NAME, Integer.toString(totalAnswers));
+            i.putExtra(CORRECT_ANSWERS_NAME, Integer.toString(numberCorrectAnswers));
             startActivity(i);
             finish();
         } else fillWithNewQuestion();

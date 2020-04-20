@@ -7,6 +7,20 @@
     android:background="@color/background"
     tools:context=".GameActivity">
 
+    <TextView
+        android:id="@+id/left_text"
+        android:layout_width="136dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:text="Tempus mentem debere lor cum sacras volunt capram. Sim nostris securum qua
+        numerus vestiri corpora revolvo. \n \n
+        Ad quarta ha at ullius nequit longum an animum. \n \n
+        Fert novo veat hoc sed. Rogo nunc quin imo etsi imo anno."
+        android:textAlignment="textEnd"
+        app:layout_constraintBottom_toBottomOf="@+id/frameQuestions"
+        app:layout_constraintEnd_toStartOf="@+id/frameQuestions"
+        app:layout_constraintTop_toTopOf="@+id/frameQuestions" />
+
     <View
         android:id="@+id/level1"
         android:layout_width="0dp"
@@ -14,7 +28,7 @@
         android:background="@drawable/rectangle_stroke"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintDimensionRatio="w,1:1"
-        app:layout_constraintStart_toStartOf="@+id/questionBoxes"
+        app:layout_constraintStart_toStartOf="@+id/frameQuestions"
         app:layout_constraintTop_toTopOf="@+id/guideline12" />
 
     <View
@@ -120,89 +134,92 @@
         android:background="@drawable/rectangle_stroke"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintDimensionRatio="w,1:1"
-        app:layout_constraintEnd_toEndOf="@+id/view2"
+        app:layout_constraintEnd_toEndOf="@+id/guideline13"
         app:layout_constraintStart_toEndOf="@+id/level9"
         app:layout_constraintTop_toTopOf="@+id/guideline12"
         app:layout_constraintVertical_bias="0.0" />
 
-    <View
-        android:id="@+id/view"
-        android:layout_width="2dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:background="@color/text"
-        app:layout_constraintBottom_toBottomOf="@+id/questionBoxes"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/questionBoxes"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <View
-        android:id="@+id/view2"
-        android:layout_width="2dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="8dp"
-        android:background="@color/text"
-        app:layout_constraintBottom_toBottomOf="@+id/questionBoxes"
-        app:layout_constraintEnd_toStartOf="@+id/guideline13"
-        app:layout_constraintTop_toTopOf="@+id/questionBoxes"
-        app:layout_constraintVertical_bias="0.0" />
-
 
     <LinearLayout
-        android:id="@+id/questionBoxes"
+        android:id="@+id/frameQuestions"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:orientation="vertical"
+        android:layout_marginBottom="16dp"
+        android:background="#FFFFFF"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/guideline7"
-        app:layout_constraintEnd_toStartOf="@+id/view2"
-        app:layout_constraintStart_toEndOf="@+id/view"
+        app:layout_constraintEnd_toStartOf="@+id/guideline13"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="@+id/guideline8">
 
-        <TextView
-            android:id="@+id/question1"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="TextView"
-            android:textColor="@color/text"
-            android:textSize="18sp" />
-
         <View
-            android:id="@+id/viewHoriz1"
+            android:id="@+id/view"
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:background="@color/text"
+            app:layout_constraintBottom_toBottomOf="@+id/questionBoxes"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toTopOf="@+id/questionBoxes"
+            app:layout_constraintVertical_bias="0.0" />
+
+
+        <LinearLayout
+            android:id="@+id/questionBoxes"
             android:layout_width="match_parent"
-            android:layout_height="2dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:background="@color/text" />
+            android:background="#FFFFFF"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/question2"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="8dp"
-            android:layout_weight="1"
-            android:text="TextView"
-            android:textColor="@color/text"
-            android:textSize="18sp" />
+            <TextView
+                android:id="@+id/question1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="TextView"
+                android:textColor="@color/text"
+                android:textSize="18sp" />
 
-        <View
-            android:id="@+id/viewHoriz2"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginEnd="8dp"
-            android:background="@color/text" />
+            <View
+                android:id="@+id/viewHoriz1"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginEnd="8dp"
+                android:background="@color/text" />
+
+            <TextView
+                android:id="@+id/question2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:text="TextView"
+                android:textColor="@color/text"
+                android:textSize="18sp" />
+
+            <View
+                android:id="@+id/viewHoriz2"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginEnd="8dp"
+                android:background="@color/text" />
 
 
-        <TextView
-            android:id="@+id/question3"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="8dp"
-            android:layout_weight="1"
-            android:text="TextView"
-            android:textColor="@color/text"
-            android:textSize="18sp" />
+            <TextView
+                android:id="@+id/question3"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:text="TextView"
+                android:textColor="@color/text"
+                android:textSize="18sp" />
+        </LinearLayout>
     </LinearLayout>
 
     <androidx.constraintlayout.widget.Guideline
@@ -228,14 +245,14 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
+        android:background="@color/colorButtons"
         android:onClick="guessYear"
         android:text="@string/guess_button"
-        android:textSize="18sp"
         android:textColor="#FFFFFF"
-        android:background="@color/colorButtons"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/questionBoxes"
-        app:layout_constraintStart_toStartOf="@+id/questionBoxes"
+        app:layout_constraintEnd_toEndOf="@+id/frameQuestions"
+        app:layout_constraintStart_toStartOf="@+id/frameQuestions"
         app:layout_constraintTop_toTopOf="@+id/guideline7" />
 
     <FrameLayout
@@ -361,7 +378,6 @@
                 android:text="1999"
                 android:textColor="@color/text"
                 android:textSize="22sp" />
-
 
             <TextView
                 android:id="@+id/yearStart_plus8"
