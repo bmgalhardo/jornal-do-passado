@@ -96,6 +96,23 @@
 
 
         <Button
+            android:id="@+id/scores"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/colorButtons"
+            android:text="@string/scores"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
+
+        <View
+            android:id="@+id/MarginButton34"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+
+        <Button
             android:id="@+id/about_game"
             android:layout_width="match_parent"
             android:layout_height="0dp"

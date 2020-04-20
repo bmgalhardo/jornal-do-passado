@@ -251,7 +251,8 @@ public class GameActivity extends AppCompatActivity {
             level_square.setBackgroundColor(saveColor);
         } else {
             if (thisPoints == 0) gauntletLevel -= 2;
-            else gauntletLevel += thisPoints;
+            else if (thisPoints == 3) gauntletLevel++;
+            else if (thisPoints == 6) gauntletLevel += 3;
 
             if (gauntletLevel > 10) gauntletLevel = 10;
 
