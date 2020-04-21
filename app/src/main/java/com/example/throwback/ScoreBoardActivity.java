@@ -32,21 +32,22 @@ public class ScoreBoardActivity extends AppCompatActivity {
         textCorrectAnswers.setText(correctAnswers);
         textTotalAnswers.setText(totalAnswers);
 
+        Score score = new Score(gamePoints, DateUtils.getToday(false), totalAnswers);
+
+        if (gameType == GameType.DEFAULT) saveToDb("scoresDefault", score);
+        else if (gameType == GameType.SUDDEN_DEATH) saveToDb("scoresSuddenDeath", score);
+    }
+
+    private void saveToDb(String keyString, Score score) {
         // Storing data into SharedPreferences
         SharedPreferences sharedPreferences = getSharedPreferences("throwback", MODE_PRIVATE);
         SharedPreferences.Editor myEdit = sharedPreferences.edit();
 
-        Score score = new Score(gameType, gamePoints, DateUtils.getToday(false), totalAnswers);
-
-        String currentString = sharedPreferences.getString("scores", null);
-
+        String currentString = sharedPreferences.getString(keyString, null);
         String newString =  new ScoresManager(currentString).addNewElement(score);
-
-        myEdit.putString("scores", newString.toString());
-
+        myEdit.putString(keyString, newString.toString());
         myEdit.apply();
     }
-
 
     public void startNewGame(View view){
         Intent i = new Intent(this, GameActivity.class);

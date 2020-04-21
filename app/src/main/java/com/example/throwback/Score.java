@@ -14,8 +14,7 @@ public class Score {
     private String date;
     private String numberOfQuestions;
 
-    public Score(GameType gameType, String score, String date, String numberOfQuestions) {
-        this.gameType = gameType;
+    public Score(String score, String date, String numberOfQuestions) {
         this.score = score;
         this.date = date;
         this.numberOfQuestions = numberOfQuestions;
@@ -24,7 +23,7 @@ public class Score {
     @NonNull
     @Override
     public String toString() {
-        return score + sep + date + sep + gameType.name() + sep + numberOfQuestions;
+        return score + sep + date + sep + numberOfQuestions;
     }
 
     public static Score parseObjectFromString(String savedString){
@@ -33,18 +32,13 @@ public class Score {
 
         String score = st.nextToken();
         String date = st.nextToken();
-        GameType gameType = GameType.valueOf(st.nextToken());
         String numberQuestions = st.nextToken();
 
-        return new Score(gameType, score, date, numberQuestions);
+        return new Score(score, date, numberQuestions);
     }
 
     public static String getSep() {
         return sep;
-    }
-
-    public GameType getGameType() {
-        return gameType;
     }
 
     public String getScore() {
