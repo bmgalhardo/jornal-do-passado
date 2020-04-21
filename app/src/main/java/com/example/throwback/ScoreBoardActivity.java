@@ -3,6 +3,7 @@ package com.example.throwback;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -30,6 +31,20 @@ public class ScoreBoardActivity extends AppCompatActivity {
         textPoints.setText(gamePoints);
         textCorrectAnswers.setText(correctAnswers);
         textTotalAnswers.setText(totalAnswers);
+
+        // Storing data into SharedPreferences
+        SharedPreferences sharedPreferences = getSharedPreferences("throwback", MODE_PRIVATE);
+        SharedPreferences.Editor myEdit = sharedPreferences.edit();
+
+        Score score = new Score(gameType, gamePoints, DateUtils.getToday(false), totalAnswers);
+
+        String currentString = sharedPreferences.getString("scores", null);
+
+        String newString =  new ScoresManager(currentString).addNewElement(score);
+
+        myEdit.putString("scores", newString.toString());
+
+        myEdit.apply();
     }
 
 

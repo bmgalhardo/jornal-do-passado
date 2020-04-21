@@ -9,12 +9,6 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.widget.TextViewCompat;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-
-
 public class MainActivity extends AppCompatActivity {
 
     public static final int TOTAL_NUMBER_QUESTIONS_PER_GAME = 4;
@@ -25,23 +19,10 @@ public class MainActivity extends AppCompatActivity {
     public static final GameType EXTRA_GAME_TYPE_DEFAULT_VALUE = GameType.DEFAULT;
 
 
-    Map<Integer,String> monthMap =new HashMap<Integer,String>();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        monthMap.put(0, "Janeiro");
-        monthMap.put(1, "Fevereiro");
-        monthMap.put(2, "Março");
-        monthMap.put(3, "Abril");
-        monthMap.put(4, "Maio");
-        monthMap.put(5, "Junho");
-        monthMap.put(6, "Julho");
-        monthMap.put(7, "Agosto");
-        monthMap.put(8, "Setembro");
-        monthMap.put(9, "Outubro");
-        monthMap.put(10, "Novembro");
-        monthMap.put(11, "Dezembro");
+
 
         // It is here to create the database for the first time
         DatabaseHandler databaseHandler = new DatabaseHandler(this);
@@ -60,20 +41,11 @@ public class MainActivity extends AppCompatActivity {
         applyBlurMaskFilter(textRight, BlurMaskFilter.Blur.NORMAL);
         applyBlurMaskFilter(textLeft, BlurMaskFilter.Blur.NORMAL);
 
-        Date date= new Date();
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
-        int monthID = cal.get(Calendar.MONTH);
-        int dayID = cal.get(Calendar.DAY_OF_MONTH);
-        int yearID = cal.get(Calendar.YEAR);
-        String month = monthMap.get(monthID);
+
 
         TextView dateView = findViewById(R.id.mainMenuDate);
 
-        String dateStr = String.format("%d de %s de %d", dayID, month, yearID);
-        dateView.setText(dateStr);
-//        System.out.println(1);
-
+        dateView.setText(DateUtils.getToday(true));
 
         // Set the text to autosize
         TextViewCompat.setAutoSizeTextTypeWithDefaults((TextView) findViewById(R.id.journalTextLeft),
@@ -84,13 +56,17 @@ public class MainActivity extends AppCompatActivity {
                 TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM);
     }
 
-    //TODO can I pass the int in startGame? Also this is not working
     /** Called when the user taps the Start Game button */
     public void startGame(View view) {
         Intent intent = new Intent(this, GameActivity.class);
         String gametype = view.getTag().toString();
         intent.putExtra(EXTRA_GAME_TYPE, gametype);
 
+        startActivity(intent);
+    }
+
+    public void topScores(View view) {
+        Intent intent = new Intent(this, TopScoreBoard.class);
         startActivity(intent);
     }
 

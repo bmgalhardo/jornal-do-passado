@@ -101,6 +101,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:background="@color/colorButtons"
+            android:onClick="topScores"
             android:text="@string/scores"
             android:textColor="#FFFFFF"
             android:textSize="18sp" />
