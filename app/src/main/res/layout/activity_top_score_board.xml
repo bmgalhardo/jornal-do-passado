@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".TopScoreBoard">
 
     <androidx.constraintlayout.widget.Guideline
@@ -20,48 +21,70 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="16dp" />
 
-    <TextView
-        android:id="@+id/textViewNormal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Modo Normal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline5" />
 
-    <TableLayout
-        android:id="@+id/suddenDeathTab"
+    <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline15"
-        app:layout_constraintEnd_toStartOf="@+id/guideline10"
-        app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toBottomOf="@+id/textViewSuddenDeath">
-
-    </TableLayout>
-
-    <TableLayout
-        android:id="@+id/normalTab"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="32dp"
         android:layout_marginBottom="32dp"
+        android:background="@drawable/cards_round"
+        android:elevation="2dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/guideline14"
-        app:layout_constraintEnd_toStartOf="@+id/guideline10"
+        app:layout_constraintEnd_toEndOf="@+id/guideline10"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toBottomOf="@+id/textViewNormal">
+        app:layout_constraintTop_toTopOf="@+id/guideline5">
 
-    </TableLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"
+            android:gravity="center"
+            android:text="@string/start_game"
+            android:textAlignment="center"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/textViewSuddenDeath"
-        android:layout_width="wrap_content"
+        <TableLayout
+            android:id="@+id/normalTab"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            android:layout_weight="1">
+
+        </TableLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="Modo Torre"
-        app:layout_constraintEnd_toEndOf="@+id/textViewNormal"
-        app:layout_constraintStart_toStartOf="@+id/textViewNormal"
-        app:layout_constraintTop_toTopOf="@+id/guideline14" />
+        android:background="@drawable/cards_round"
+        android:elevation="2dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/guideline15"
+        app:layout_constraintEnd_toEndOf="@+id/guideline10"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toTopOf="@+id/guideline14">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"
+            android:gravity="center"
+            android:text="@string/start_game_tower"
+            android:textAlignment="center"
+            android:textStyle="bold" />
+
+        <TableLayout
+            android:id="@+id/suddenDeathTab"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            android:layout_weight="1">
+
+        </TableLayout>
+
+    </LinearLayout>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline10"

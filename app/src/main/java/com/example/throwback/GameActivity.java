@@ -1,11 +1,13 @@
 package com.example.throwback;
 
 import android.content.Intent;
-import android.graphics.BlurMaskFilter;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,11 +23,6 @@ import kotlin.jvm.functions.Function1;
 
 public class GameActivity extends AppCompatActivity {
 
-    public static final String QUESTION_FIELD = "com.example.throwback.question";
-    public static final String QUESTION_CORRECT_YEAR = "com.example.throwback.correctYear";
-    public static final String QUESTION_GUESS_YEAR = "com.example.throwback.guessYear";
-
-    public static final int NUMBER_MAXIMUM_HELP = 3;
     public static final Integer[] TEXT_FIELDS_QUESTIONS = {R.id.question1, R.id.question2,
             R.id.question3};
 
@@ -51,7 +48,7 @@ public class GameActivity extends AppCompatActivity {
     private int numberCorrectAnswers;
     private int totalAnswers;
 
-    public int gauntletLevel = 10;
+    public int gauntletLevel = 5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +59,8 @@ public class GameActivity extends AppCompatActivity {
         Intent intent = getIntent();
         gameType = GameType.valueOf(intent.getStringExtra(MainActivity.EXTRA_GAME_TYPE));
 
+        if (gameType == GameType.DEFAULT) getSupportActionBar().setTitle(R.string.start_game);
+        else getSupportActionBar().setTitle(R.string.start_game_tower);
 
         numberCorrectAnswers = 0;
         totalAnswers = 0;
@@ -73,8 +72,6 @@ public class GameActivity extends AppCompatActivity {
         number_help = 0;
 
         final int colorTry = getResources().getColor(R.color.tries);
-        TextView left_text = findViewById(R.id.left_text);
-        MainActivity.applyBlurMaskFilter(left_text, BlurMaskFilter.Blur.NORMAL);
 
         VerticalSeekBar yearBar = findViewById(R.id.yearBar);
         // get year boxes
@@ -102,13 +99,18 @@ public class GameActivity extends AppCompatActivity {
             }
         });
 
+        final ProgressBar progressBar = findViewById(R.id.progressBar);
+        int col = getResources().getColor(R.color.colorButtons);
+
+        if (gameType == GameType.SUDDEN_DEATH) {
+            col = getResources().getColor(R.color.g10);
+            progressBar.setProgress(100);
+        }
+
+        progressBar.getProgressDrawable().setColorFilter(col, PorterDuff.Mode.SRC_IN);
+
         fillWithNewQuestion();
 
-        if (gameType == GameType.SUDDEN_DEATH) for (int i = 1; i <= 10; i++) {
-            String level_i = "level" + i;
-            View level_square = findViewById(getResources().getIdentifier(level_i, "id", getPackageName()));
-            level_square.setBackgroundColor(getResources().getColor(R.color.g10));
-        }
     }
 
     private void fillWithNewQuestion(){
@@ -143,9 +145,6 @@ public class GameActivity extends AppCompatActivity {
         int numberQuestions = TEXT_FIELDS_QUESTIONS.length;
         headlinesSelected = databaseHandler.getNewsByYear(CORRECT_YEAR, numberQuestions);
 
-        TextView points = findViewById(R.id.points);
-        points.setText("Score: " + Integer.toString(currentPoints));
-
         // Fill all the questions
         for (int i = 0; i < numberQuestions; i++) {
 
@@ -153,13 +152,7 @@ public class GameActivity extends AppCompatActivity {
 
             // Set the text to autosize
             questionTextField.setText(headlinesSelected.get(i).getHeadline());
-            TextViewCompat.setAutoSizeTextTypeWithDefaults(questionTextField,
-                    TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM);
         }
-
-        //autosize left text
-        TextViewCompat.setAutoSizeTextTypeWithDefaults((TextView) findViewById(R.id.left_text),
-                TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM);
 
         //fill year bar
         int randomInt = (int) (yearOptions * Math.random());
@@ -175,6 +168,14 @@ public class GameActivity extends AppCompatActivity {
             TextView thisYearBox = (TextView) yearBoxes.getChildAt(i);
             thisYearBox.setText(Integer.toString(startYear + i));
         }
+
+        TextView tv = findViewById(R.id.tower_explaining_tv);
+
+        if (gameType == GameType.DEFAULT) {
+            final ProgressBar progressBar = findViewById(R.id.progressBar);
+            progressBar.setProgress(CURRENT_LEVEL*10);
+            tv.setText("Restantes Perguntas: " + CURRENT_LEVEL + "/10");
+        } else tv.setText("Restantes Tentativas: " + Integer.toString(gauntletLevel));
 
     }
 
@@ -200,14 +201,9 @@ public class GameActivity extends AppCompatActivity {
         final ViewGroup yearBoxes = findViewById(R.id.yearBoxes);
         final int yearOptions = yearBoxes.getChildCount();
 
-        final int colorback = getResources().getColor(R.color.background);
-        final int colorSigma0 = getResources().getColor(R.color.colorSigma0);
-        final int colorSigma1 = getResources().getColor(R.color.colorSigma1);
-        final int colorSigma2 = getResources().getColor(R.color.colorSigma2);
-        final int wrong_guess = getResources().getColor(R.color.wrong_guess);
         final int tries = getResources().getColor(R.color.tries);
         int thisPoints = 0;
-        int saveColor = wrong_guess;
+        int saveColor;
 
         // Assign colors to boxes and points
         for (int i = 0; i < yearOptions; i++) {
@@ -215,82 +211,74 @@ public class GameActivity extends AppCompatActivity {
             int thisYear =  i + startYear;
 
             if (thisYear == CORRECT_YEAR) {
+                saveColor = getResources().getColor(R.color.colorSigma0);
                 if (thisYear == yearGuess) {
                     thisPoints = 6;
                     thisYearBox.setBackgroundColor(tries);
-                    saveColor = colorSigma0;
                     numberCorrectAnswers++;
-                } else thisYearBox.setBackgroundColor(colorSigma0);
+                } else thisYearBox.setBackgroundColor(saveColor);
             }
             else if ((thisYear < CORRECT_YEAR && thisYear > CORRECT_YEAR - 2) ||
                     (thisYear > CORRECT_YEAR && thisYear < CORRECT_YEAR + 2)) {
+                saveColor = getResources().getColor(R.color.colorSigma1);
                 if (thisYear == yearGuess) {
                     thisPoints = 3;
                     thisYearBox.setBackgroundColor(tries);
-                    saveColor = colorSigma1;
-                } else thisYearBox.setBackgroundColor(colorSigma1);
+                } else thisYearBox.setBackgroundColor(saveColor);
             }
             else if ((thisYear < CORRECT_YEAR && thisYear > CORRECT_YEAR - 5) ||
                     (thisYear > CORRECT_YEAR && thisYear < CORRECT_YEAR + 5)) {
+                saveColor = getResources().getColor(R.color.colorSigma2);
                 if (thisYear == yearGuess) {
                     thisPoints = 1;
                     thisYearBox.setBackgroundColor(tries);
-                    saveColor = colorSigma2;
-                } else thisYearBox.setBackgroundColor(colorSigma2);
+                } else thisYearBox.setBackgroundColor(saveColor);
             }
             else {
                 if (thisYear == yearGuess) thisYearBox.setBackgroundColor(tries);
-                else thisYearBox.setBackgroundColor(colorback);
+                else thisYearBox.setBackgroundColor(getResources().getColor(R.color.background));
             }
         }
 
+        final ProgressBar progressBar = findViewById(R.id.progressBar);
+
         // updates level and points
-        if (gameType == GameType.DEFAULT) {
-            String level_i = "level" + CURRENT_LEVEL;
-            View level_square = findViewById(getResources().getIdentifier(level_i, "id", getPackageName()));
-            level_square.setBackgroundColor(saveColor);
-        } else {
-            if (thisPoints == 0) gauntletLevel -= 2;
+        if (gameType == GameType.SUDDEN_DEATH) {
+            if (thisPoints == 0) gauntletLevel -= 1;
             else if (thisPoints == 3) gauntletLevel++;
-            else if (thisPoints == 6) gauntletLevel += 3;
+            else if (thisPoints == 6) gauntletLevel += 2;
 
             if (gauntletLevel > 10) gauntletLevel = 10;
 
             int col;
-            if (gauntletLevel == 10) col = getResources().getColor(R.color.g10);
-            else if (gauntletLevel > 7) col = getResources().getColor(R.color.g8);
-            else if (gauntletLevel > 5) col = getResources().getColor(R.color.g6);
-            else if (gauntletLevel > 3) col = getResources().getColor(R.color.g4);
-            else if (gauntletLevel > 1) col = getResources().getColor(R.color.g2);
+            if (gauntletLevel == 5) col = getResources().getColor(R.color.g10);
+            else if (gauntletLevel == 4) col = getResources().getColor(R.color.g8);
+            else if (gauntletLevel == 3) col = getResources().getColor(R.color.g4);
+            else if (gauntletLevel == 2) col = getResources().getColor(R.color.g2);
+            else if (gauntletLevel == 1) col = getResources().getColor(R.color.g1);
             else col = getResources().getColor(R.color.g1);
 
-            for (int i = 1; i <= 10; i++) {
-                String level_i = "level" + i;
-                View level_square = findViewById(getResources().getIdentifier(level_i, "id", getPackageName()));
-                if (i > gauntletLevel) level_square.setBackgroundResource(R.drawable.rectangle_stroke);
-                else level_square.setBackgroundColor(col);
-            }
+            progressBar.setProgress(gauntletLevel*20);
+            progressBar.getProgressDrawable().setColorFilter(col, PorterDuff.Mode.SRC_IN);
+
+            TextView tv = findViewById(R.id.tower_explaining_tv);
+            tv.setText("Tentativas Restantes: " + gauntletLevel);
+
         }
         currentPoints += thisPoints;
 
+        TextView points = findViewById(R.id.points);
+        points.setText(Integer.toString(currentPoints));
+
+        // endgame: triggers scores
         if ((totalAnswers == 10 && gameType == GameType.DEFAULT) ||
-                (gauntletLevel < 1 && gameType == GameType.SUDDEN_DEATH)) {
-
-            buttonNextQuestion.setText("Ver Pontuação");
-
-//            new Handler().postDelayed(new Runnable() {
-//                @Override
-//                public void run() {
-//                    Intent i = new Intent(GameActivity.this, ScoreBoardActivity.class);
-//                    startActivity(i);
-//                    finish();
-//                }
-//            }, MainActivity.TIME_SHOW_FINAL_ANSWER);
-        }
+                (gauntletLevel < 1 && gameType == GameType.SUDDEN_DEATH)) buttonNextQuestion.setText("Ver Pontuação");
     }
 
     public void getNextQuestion(View view){
         number_help = 0;
+
+        // endgame: triggers scores
         if ((totalAnswers == 10 && gameType == GameType.DEFAULT) ||
                 (gauntletLevel < 1 && gameType == GameType.SUDDEN_DEATH)) {
             Intent i = new Intent(GameActivity.this, ScoreBoardActivity.class);

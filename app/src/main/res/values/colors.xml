@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#AEAEAE</color>
+    <color name="colorPrimary">#65737e</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorButtons">#4f5b66</color>
     <color name="colorAccent">#6E6E6E</color>
@@ -8,7 +8,7 @@
     <color name="colorSigma1">#8003FE00</color>
     <color name="colorSigma0">#B3008C06</color>
     <color name="wrong_guess">#1A000000</color>
-    <color name="background">#FFFFFF</color>
+    <color name="background">#E8E8E8</color>
     <color name="text">#000000</color>
     <color name="tries">#65737e</color>
     <color name="g1">#FF5722</color>
@@ -17,4 +17,5 @@
     <color name="g6">#FFEB3B</color>
     <color name="g8">#8BC34A</color>
     <color name="g10">#8003FE00</color>
+    <color name="cards">#ffffff</color>
 </resources>

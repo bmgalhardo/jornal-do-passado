@@ -7,22 +7,14 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.widget.TextViewCompat;
 
 public class MainActivity extends AppCompatActivity {
-
-    public static final int TOTAL_NUMBER_QUESTIONS_PER_GAME = 4;
-    public static final int TIME_SHOW_FINAL_ANSWER = 4000;
-    public static final int TIME_SHOW_FINAL_STATISTICS = 4000;
 
     public static final String EXTRA_GAME_TYPE = "GAME_TYPE";
     public static final GameType EXTRA_GAME_TYPE_DEFAULT_VALUE = GameType.DEFAULT;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
 
         // It is here to create the database for the first time
         DatabaseHandler databaseHandler = new DatabaseHandler(this);
@@ -41,19 +33,9 @@ public class MainActivity extends AppCompatActivity {
         applyBlurMaskFilter(textRight, BlurMaskFilter.Blur.NORMAL);
         applyBlurMaskFilter(textLeft, BlurMaskFilter.Blur.NORMAL);
 
-
-
         TextView dateView = findViewById(R.id.mainMenuDate);
 
         dateView.setText(DateUtils.getToday(true));
-
-        // Set the text to autosize
-        TextViewCompat.setAutoSizeTextTypeWithDefaults((TextView) findViewById(R.id.journalTextLeft),
-                TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM);
-        TextViewCompat.setAutoSizeTextTypeWithDefaults((TextView) findViewById(R.id.journalTextCenter),
-                TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM);
-        TextViewCompat.setAutoSizeTextTypeWithDefaults((TextView) findViewById(R.id.journalTextRight),
-                TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM);
     }
 
     /** Called when the user taps the Start Game button */

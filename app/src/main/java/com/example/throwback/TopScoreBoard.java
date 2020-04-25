@@ -1,9 +1,11 @@
 package com.example.throwback;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.widget.TextViewCompat;
 
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.widget.TableLayout;
@@ -20,6 +22,8 @@ public class TopScoreBoard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_top_score_board);
+
+        getSupportActionBar().setTitle(R.string.scores);
 
         SharedPreferences sharedPreferences = getSharedPreferences("throwback", MODE_PRIVATE);
         String scoresDefault = sharedPreferences.getString("scoresDefault", null);
@@ -57,7 +61,12 @@ public class TopScoreBoard extends AppCompatActivity {
                 TextView tv = new TextView(this);
                 tv.setText(elements[j]);
                 tv.setGravity(Gravity.CENTER);
-                if (i == 0) tv.setTextColor(Color.WHITE);
+                TextViewCompat.setAutoSizeTextTypeWithDefaults(tv, TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM);
+                tv.setPadding(1, 1, 1, 1);
+                if (i == 0) {
+                    tv.setTypeface(null, Typeface.BOLD);
+                    tv.setTextColor(Color.WHITE);
+                }
                 row.addView(tv);
             }
             table.addView(row);
