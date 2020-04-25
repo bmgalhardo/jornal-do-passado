@@ -11,6 +11,7 @@
     <color name="background">#E8E8E8</color>
     <color name="text">#000000</color>
     <color name="tries">#65737e</color>
+    <color name="light_color">#A7B5C1</color>
     <color name="g1">#FF5722</color>
     <color name="g2">#FF9800</color>
     <color name="g4">#FFC107</color>

@@ -2,7 +2,6 @@ package com.example.throwback;
 
 import android.content.Intent;
 import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +10,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.widget.TextViewCompat;
 
 import com.lukelorusso.verticalseekbar.VerticalSeekBar;
 
@@ -32,6 +30,9 @@ public class GameActivity extends AppCompatActivity {
     public static int CURRENT_LEVEL;
     final public static String CURRENT_POINTS_NAME = "CURRENT_POINTS_NAME";
     final public static String CORRECT_ANSWERS_NAME = "CORRECT_ANSWERS_NAME";
+    final public static String CORRECT_ANSWERS_NAME_1 = "CORRECT_ANSWERS_NAME_1";
+    final public static String CORRECT_ANSWERS_NAME_2 = "CORRECT_ANSWERS_NAME_2";
+    final public static String WRONG_ANSWERS_NAME = "WRONG_ANSWERS_NAME";
     final public static String TOTAL_ANSWERS_NAME = "TOTAL_ANSWERS_NAME";
 
     public static int CORRECT_YEAR;
@@ -46,6 +47,9 @@ public class GameActivity extends AppCompatActivity {
     public int startYear;
     private int currentPoints;
     private int numberCorrectAnswers;
+    private int numberCorrectAnswers_1;
+    private int numberCorrectAnswers_2;
+    private int wrong_answers;
     private int totalAnswers;
 
     public int gauntletLevel = 5;
@@ -63,6 +67,9 @@ public class GameActivity extends AppCompatActivity {
         else getSupportActionBar().setTitle(R.string.start_game_tower);
 
         numberCorrectAnswers = 0;
+        numberCorrectAnswers_1 = 0;
+        numberCorrectAnswers_2 = 0;
+        wrong_answers = 0;
         totalAnswers = 0;
         CURRENT_LEVEL = 0;
         currentPoints = 0;
@@ -224,6 +231,7 @@ public class GameActivity extends AppCompatActivity {
                 if (thisYear == yearGuess) {
                     thisPoints = 3;
                     thisYearBox.setBackgroundColor(tries);
+                    numberCorrectAnswers_1++;
                 } else thisYearBox.setBackgroundColor(saveColor);
             }
             else if ((thisYear < CORRECT_YEAR && thisYear > CORRECT_YEAR - 5) ||
@@ -232,6 +240,7 @@ public class GameActivity extends AppCompatActivity {
                 if (thisYear == yearGuess) {
                     thisPoints = 1;
                     thisYearBox.setBackgroundColor(tries);
+                    numberCorrectAnswers_2++;
                 } else thisYearBox.setBackgroundColor(saveColor);
             }
             else {
@@ -240,11 +249,15 @@ public class GameActivity extends AppCompatActivity {
             }
         }
 
+        if (thisPoints == 0) wrong_answers++;
+
         final ProgressBar progressBar = findViewById(R.id.progressBar);
 
         // updates level and points
         if (gameType == GameType.SUDDEN_DEATH) {
-            if (thisPoints == 0) gauntletLevel -= 1;
+            if (thisPoints == 0) {
+                gauntletLevel -= 1;
+            }
             else if (thisPoints == 3) gauntletLevel++;
             else if (thisPoints == 6) gauntletLevel += 2;
 
@@ -286,8 +299,20 @@ public class GameActivity extends AppCompatActivity {
             i.putExtra(CURRENT_POINTS_NAME, Integer.toString(currentPoints));
             i.putExtra(TOTAL_ANSWERS_NAME, Integer.toString(totalAnswers));
             i.putExtra(CORRECT_ANSWERS_NAME, Integer.toString(numberCorrectAnswers));
+            i.putExtra(CORRECT_ANSWERS_NAME_1, Integer.toString(numberCorrectAnswers_1));
+            i.putExtra(CORRECT_ANSWERS_NAME_2, Integer.toString(numberCorrectAnswers_2));
+            i.putExtra(WRONG_ANSWERS_NAME, Integer.toString(wrong_answers));
             startActivity(i);
             finish();
         } else fillWithNewQuestion();
+    }
+
+    // to detect if user left app during question
+    @Override
+    protected void onPause() {
+
+        super.onPause();
+        Button btn = findViewById(R.id.buttonGuessYear);
+        btn.performClick();
     }
 }

@@ -38,7 +38,7 @@ public class TopScoreBoard extends AppCompatActivity {
     public void fillTable(TableLayout table, String scoreString){
 
         final int headerColor = getResources().getColor(R.color.colorButtons);
-        final int alternateColor = getResources().getColor(R.color.tries);
+        final int alternateColor = getResources().getColor(R.color.light_color);
 
         String[] elements;
 

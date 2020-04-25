@@ -37,7 +37,7 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="0.1"
             android:gravity="center"
             android:text="@string/start_game"
@@ -48,8 +48,7 @@
             android:id="@+id/normalTab"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="16dp"
-            android:layout_weight="1">
+            android:layout_weight="0.9">
 
         </TableLayout>
 
@@ -68,7 +67,7 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="0.1"
             android:gravity="center"
             android:text="@string/start_game_tower"
@@ -79,8 +78,7 @@
             android:id="@+id/suddenDeathTab"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="16dp"
-            android:layout_weight="1">
+            android:layout_weight="0.9">
 
         </TableLayout>
 
