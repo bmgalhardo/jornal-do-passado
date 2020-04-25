@@ -36,7 +36,7 @@ public class GameActivity extends AppCompatActivity {
     final public static String WRONG_ANSWERS_NAME = "WRONG_ANSWERS_NAME";
     final public static String TOTAL_ANSWERS_NAME = "TOTAL_ANSWERS_NAME";
 
-    final public static int TIME_TO_ANSWER = 10; // seconds
+    final public static int TIME_TO_ANSWER = 15; // seconds
 
     public static int CORRECT_YEAR;
 
@@ -192,13 +192,16 @@ public class GameActivity extends AppCompatActivity {
         } else tv.setText("Restantes Tentativas: " + Integer.toString(gauntletLevel));
 
         // start timer
-        timer = new CountDownTimer(5*1000, 1*1000) {
+        timer = new CountDownTimer(TIME_TO_ANSWER*1000, 1000) {
+
+            TextView tv = findViewById(R.id.timer_tv);
 
             public void onTick(long millisUntilFinished) {
-                System.out.println(millisUntilFinished / 1000);
+                tv.setText(Long.toString(millisUntilFinished / 1000));
             }
 
             public void onFinish() {
+                tv.setText("0");
                 Button btn = findViewById(R.id.buttonGuessYear);
                 btn.performClick();
             }
