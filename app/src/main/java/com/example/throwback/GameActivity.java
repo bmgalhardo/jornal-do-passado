@@ -3,6 +3,7 @@ package com.example.throwback;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -35,6 +36,8 @@ public class GameActivity extends AppCompatActivity {
     final public static String WRONG_ANSWERS_NAME = "WRONG_ANSWERS_NAME";
     final public static String TOTAL_ANSWERS_NAME = "TOTAL_ANSWERS_NAME";
 
+    final public static int TIME_TO_ANSWER = 10; // seconds
+
     public static int CORRECT_YEAR;
 
     private GameType gameType;
@@ -53,6 +56,8 @@ public class GameActivity extends AppCompatActivity {
     private int totalAnswers;
 
     public int gauntletLevel = 5;
+    private boolean guessing;
+    private CountDownTimer timer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -125,6 +130,8 @@ public class GameActivity extends AppCompatActivity {
         CURRENT_LEVEL++;
         yearGuess = 0;
 
+        guessing = true;
+
         Button buttonGuessYear = findViewById(R.id.buttonGuessYear);
         buttonGuessYear.setVisibility(View.VISIBLE);
 
@@ -184,12 +191,27 @@ public class GameActivity extends AppCompatActivity {
             tv.setText("Restantes Perguntas: " + CURRENT_LEVEL + "/10");
         } else tv.setText("Restantes Tentativas: " + Integer.toString(gauntletLevel));
 
+        // start timer
+        timer = new CountDownTimer(5*1000, 1*1000) {
+
+            public void onTick(long millisUntilFinished) {
+                System.out.println(millisUntilFinished / 1000);
+            }
+
+            public void onFinish() {
+                Button btn = findViewById(R.id.buttonGuessYear);
+                btn.performClick();
+            }
+        }.start();
     }
 
     /**
      * Called when the user taps the guess button
      */
     public void guessYear(View view) {
+
+        timer.cancel();
+        guessing = false;
 
         Button buttonGuessYear = findViewById(R.id.buttonGuessYear);
         buttonGuessYear.setVisibility(View.INVISIBLE);
@@ -312,7 +334,9 @@ public class GameActivity extends AppCompatActivity {
     protected void onPause() {
 
         super.onPause();
-        Button btn = findViewById(R.id.buttonGuessYear);
-        btn.performClick();
+        if (guessing) {
+            Button btn = findViewById(R.id.buttonGuessYear);
+            btn.performClick();
+        }
     }
 }
