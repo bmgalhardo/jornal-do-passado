@@ -37,7 +37,7 @@ public class GameActivity extends AppCompatActivity {
     final public static String WRONG_ANSWERS_NAME = "WRONG_ANSWERS_NAME";
     final public static String TOTAL_ANSWERS_NAME = "TOTAL_ANSWERS_NAME";
 
-    final public static int TIME_TO_ANSWER = 15; // seconds
+    final public static int TIME_TO_ANSWER = 30; // seconds
 
     public static int CORRECT_YEAR;
 
