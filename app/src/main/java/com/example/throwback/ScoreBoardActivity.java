@@ -111,5 +111,8 @@ public class ScoreBoardActivity extends AppCompatActivity {
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
     }
-
+    public void showNews(View view){
+        Intent i = new Intent(this, ScrollingNews.class);
+        startActivity(i);
+    }
 }

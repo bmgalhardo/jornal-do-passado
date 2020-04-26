@@ -7,7 +7,6 @@
     android:background="@color/background"
     tools:context=".ScoreBoardActivity">
 
-
     <Button
         android:id="@+id/backMenu"
         android:layout_width="150dp"
@@ -27,7 +26,7 @@
         android:id="@+id/frameScores"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/cards_round"
         android:elevation="4dp"
         android:orientation="vertical"
@@ -61,14 +60,30 @@
         android:id="@+id/newGame"
         android:layout_width="150dp"
         android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/buttons"
         android:onClick="startNewGame"
         android:text="NOVO JOGO"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toBottomOf="@+id/newGame2" />
+
+    <Button
+        android:id="@+id/newGame2"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/buttons"
+        android:onClick="showNews"
+        android:text="Ver Noticias do Jogo"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/backMenu"
+        app:layout_constraintStart_toStartOf="@+id/newGame"
         app:layout_constraintTop_toBottomOf="@+id/guidelineEndCirclePoints" />
 
     <View
@@ -96,7 +111,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.72" />
+        app:layout_constraintGuide_percent="0.70" />
 
     <TextView
         android:id="@+id/pontos"

@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.lukelorusso.verticalseekbar.VerticalSeekBar;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import kotlin.Unit;
@@ -58,12 +59,15 @@ public class GameActivity extends AppCompatActivity {
     public int gauntletLevel = 5;
     private boolean guessing;
     private CountDownTimer timer;
+    public static List<Headline> headlineArray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game);
+
+        headlineArray = new ArrayList<Headline>();
 
         Intent intent = getIntent();
         gameType = GameType.valueOf(intent.getStringExtra(MainActivity.EXTRA_GAME_TYPE));
@@ -166,6 +170,7 @@ public class GameActivity extends AppCompatActivity {
 
             // Set the text to autosize
             questionTextField.setText(headlinesSelected.get(i).getHeadline());
+            headlineArray.add(headlinesSelected.get(i));
         }
 
         //fill year bar
