@@ -43,13 +43,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String COLUMN_HEADLINE = "headline";
     private static final String COLUMN_ULR = "url";
     private static final String COLUMN_DATE = "date";
+    private static final String COLUMN_ORDER = "order_number";
+    private static final String COLUMN_NUMBER_WORDS = "number_words";
+    private static final String COLUMN_NEWSPAPER = "newspaper";
     private static final String COLUMN_YEAR = "year";
     private static final String COLUMN_MONTH = "month";
     private static final String COLUMN_DAY = "day";
 
 
     private static String CSV_PATH;
-    private static final String CSV_FILE = "all_news_extracted.csv";
+    private static final String CSV_FILE = "mobile_trimmed_news_tab.csv";
     private static final String CSV_SPLIT_BY = "\t";
 
     SQLiteDatabase database;
@@ -57,6 +60,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public DatabaseHandler(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.context = context;
+        /*
+        database = getWritableDatabase();
+        insertDataDatabaseFromCSV();
+        */
 
         boolean dbexist = checkdatabase();
         if (dbexist) {
@@ -136,6 +143,19 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        /*
+        db.execSQL("CREATE TABLE " + TABLE_NAME + " ( " +
+                COLUMN_ID + " int NOT NULL, " +
+                COLUMN_HEADLINE + " TEXT NOT NULL, " +
+                COLUMN_ULR + " TEXT NOT NULL, " +
+                COLUMN_DATE + " TEXT NOT NULL, " +
+                COLUMN_ORDER + " INT NOT NULL, " +
+                COLUMN_NUMBER_WORDS + " INT NOT NULL, " +
+                COLUMN_NEWSPAPER + " TEXT NOT NULL, " +
+                COLUMN_YEAR + " INT NOT NULL, " +
+                COLUMN_MONTH + " INT NOT NULL, " +
+                COLUMN_DAY + " INT NOT NULL, " +
+                " PRIMARY KEY(" + COLUMN_ID + "))");*/
     }
 
 
@@ -202,6 +222,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             values.put(COLUMN_HEADLINE, headline.getHeadline());
             values.put(COLUMN_ULR, headline.getUrl());
             values.put(COLUMN_DATE, headline.getDate());
+            values.put(COLUMN_ORDER, headline.getOrder());
+            values.put(COLUMN_NEWSPAPER, headline.getNewspaper());
+            values.put(COLUMN_NUMBER_WORDS, headline.getNumberWords());
 
 
             values.put(COLUMN_YEAR, headline.getYear());
@@ -214,28 +237,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             // Insert the new row, returning the primary key value of the new row
             long newRowId = database.insert(TABLE_NAME, null, values);
         }
-
-        /*
-
-        @Override
-        public void onCreate(SQLiteDatabase db) {
-            db.execSQL("CREATE TABLE " + TABLE_NAME + " ( " +
-                    COLUMN_ID + " int NOT NULL, " +
-                    COLUMN_HEADLINE + " TEXT NOT NULL, " +
-                    COLUMN_ULR + " TEXT NOT NULL, " +
-                    COLUMN_DATE + " TEXT NOT NULL, " +
-                    COLUMN_YEAR + " INT NOT NULL, " +
-                    COLUMN_MONTH + " INT NOT NULL, " +
-                    COLUMN_DAY + " INT NOT NULL, " +
-                    " PRIMARY KEY(" + COLUMN_ID + "))");
-        }
-
-        @Override
-        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-            db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
-            onCreate(db);
-        }
-         */
     }
 
 
@@ -261,14 +262,18 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 String[] lineNewsInfo = line.split(CSV_SPLIT_BY);
 
                 String headline = lineNewsInfo[0];
-                String url = lineNewsInfo[2];
                 String date = lineNewsInfo[1];
+                String url = lineNewsInfo[2];
+                int order = Integer.parseInt(lineNewsInfo[3]);
+                int numberWords = Integer.parseInt(lineNewsInfo[4]);
+                String newspaper = lineNewsInfo[5];
 
-                int year = Integer.parseInt(date.split("/")[2]);
-                int month = Integer.parseInt(date.split("/")[1]);
-                int day = Integer.parseInt(date.split("/")[0]);
+                int year = Integer.parseInt(date.split("-")[0]);
+                int month = Integer.parseInt(date.split("-")[1]);
+                int day = Integer.parseInt(date.split("-")[2]);
 
-                headlineCollection.add(new Headline(headline, url, date, year, month, day));
+                headlineCollection.add(new Headline(headline, url, date, order, numberWords,
+                        newspaper, year, month, day));
 
 
             }
