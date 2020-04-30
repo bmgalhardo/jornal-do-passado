@@ -291,7 +291,7 @@ public class GameActivity extends AppCompatActivity {
             else if (thisPoints == 3) gauntletLevel++;
             else if (thisPoints == 6) gauntletLevel += 2;
 
-            if (gauntletLevel > 10) gauntletLevel = 10;
+            if (gauntletLevel > 5) gauntletLevel = 5;
 
             int col;
             if (gauntletLevel == 5) col = getResources().getColor(R.color.g10);
