@@ -10,7 +10,7 @@
     <Button
         android:id="@+id/backMenu"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/buttons"
@@ -18,10 +18,10 @@
         android:text="@string/menu"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/newGame"
+        app:layout_constraintBottom_toTopOf="@+id/guide_menu_bottom"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline11" />
+        app:layout_constraintStart_toStartOf="@+id/guideline11"
+        app:layout_constraintTop_toTopOf="@+id/guide_menu_top" />
 
     <LinearLayout
         android:id="@+id/frameScores"
@@ -60,34 +60,32 @@
     <Button
         android:id="@+id/newGame"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="0dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="16dp"
         android:background="@drawable/buttons"
         android:onClick="startNewGame"
         android:text="NOVO JOGO"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/guide_menu_bottom"
         app:layout_constraintEnd_toStartOf="@+id/guideline11"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
-        app:layout_constraintTop_toBottomOf="@+id/newGame2" />
+        app:layout_constraintTop_toTopOf="@+id/guide_menu_top" />
 
     <Button
         android:id="@+id/newGame2"
         android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="32dp"
+        android:layout_height="0dp"
         android:background="@drawable/buttons"
         android:onClick="showNews"
         android:text="Ver Noticias do Jogo"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/guide_news_bottom"
         app:layout_constraintEnd_toEndOf="@+id/backMenu"
         app:layout_constraintStart_toStartOf="@+id/newGame"
-        app:layout_constraintTop_toBottomOf="@+id/guidelineEndCirclePoints" />
+        app:layout_constraintTop_toTopOf="@+id/guide_news_top" />
 
     <View
         android:id="@+id/view2"
@@ -177,5 +175,40 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_news_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.77" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_news_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.84" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_menu_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.89" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_menu_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.96" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

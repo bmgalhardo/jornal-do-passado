@@ -52,6 +52,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void credits(View view) {
+        Intent intent = new Intent(this, Credits.class);
+        startActivity(intent);
+    }
+
     // Custom method to apply BlurMaskFilter to a TextView text
     // https://android--examples.blogspot.com/2015/11/how-to-use-blurmaskfilter-in-android.html
     protected static void applyBlurMaskFilter(TextView tv, BlurMaskFilter.Blur style) {

@@ -26,7 +26,7 @@ public class GameActivity extends AppCompatActivity {
     public static final Integer[] TEXT_FIELDS_QUESTIONS = {R.id.question1, R.id.question2,
             R.id.question3};
 
-    public static int MIN_YEAR = 2001;
+    public static int MIN_YEAR = 1998;
     public static int MAX_YEAR = 2020;
 
     public static int CURRENT_LEVEL;
@@ -168,7 +168,6 @@ public class GameActivity extends AppCompatActivity {
 
             TextView questionTextField = findViewById(TEXT_FIELDS_QUESTIONS[i]);
 
-            // Set the text to autosize
             questionTextField.setText(headlinesSelected.get(i).getHeadline());
             headlineArray.add(headlinesSelected.get(i));
         }
@@ -264,8 +263,8 @@ public class GameActivity extends AppCompatActivity {
                     numberCorrectAnswers_1++;
                 } else thisYearBox.setBackgroundColor(saveColor);
             }
-            else if ((thisYear < CORRECT_YEAR && thisYear > CORRECT_YEAR - 5) ||
-                    (thisYear > CORRECT_YEAR && thisYear < CORRECT_YEAR + 5)) {
+            else if ((thisYear < CORRECT_YEAR && thisYear > CORRECT_YEAR - 4) ||
+                    (thisYear > CORRECT_YEAR && thisYear < CORRECT_YEAR + 4)) {
                 saveColor = getResources().getColor(R.color.colorSigma2);
                 if (thisYear == yearGuess) {
                     thisPoints = 1;

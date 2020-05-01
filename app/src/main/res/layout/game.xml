@@ -25,8 +25,7 @@
         android:layout_height="0dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="14dp"
         android:background="@color/background"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/guideline7"
@@ -44,7 +43,8 @@
             android:padding="5dp"
             android:text="TextView"
             android:textColor="@color/text"
-            android:textSize="18sp"
+            android:textSize="22sp"
+            app:autoSizeMaxTextSize="22sp"
             app:autoSizeTextType="uniform" />
 
         <TextView
@@ -58,7 +58,8 @@
             android:padding="5dp"
             android:text="TextView"
             android:textColor="@color/text"
-            android:textSize="18sp"
+            android:textSize="22sp"
+            app:autoSizeMaxTextSize="22sp"
             app:autoSizeTextType="uniform" />
 
 
@@ -74,7 +75,8 @@
             android:padding="5dp"
             android:text="TextView"
             android:textColor="@color/text"
-            android:textSize="18sp"
+            android:textSize="22sp"
+            app:autoSizeMaxTextSize="22sp"
             app:autoSizeTextType="uniform" />
     </LinearLayout>
 
@@ -82,20 +84,18 @@
     <Button
         android:id="@+id/buttonGuessYear"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="0dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="32dp"
         android:background="@drawable/buttons"
         android:onClick="guessYear"
         android:text="@string/guess_button"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/guideline17"
         app:layout_constraintEnd_toEndOf="@+id/frameQuestions"
         app:layout_constraintStart_toStartOf="@+id/frameQuestions"
-        app:layout_constraintTop_toTopOf="@+id/guideline7" />
+        app:layout_constraintTop_toTopOf="@+id/guideline16" />
 
     <FrameLayout
         android:id="@+id/frameSlider"
@@ -134,11 +134,11 @@
                 android:layout_weight="1"
                 android:background="@color/background"
                 android:gravity="center"
-                android:text="1999"
-                app:autoSizeTextType="uniform"
                 android:padding="1dp"
+                android:text="1999"
                 android:textColor="@color/text"
-                android:textSize="22sp" />
+                android:textSize="22sp"
+                app:autoSizeTextType="uniform" />
 
             <TextView
                 android:id="@+id/yearStart_plus1"
@@ -147,11 +147,11 @@
                 android:layout_weight="1"
                 android:background="@color/background"
                 android:gravity="center"
-                android:text="1999"
-                app:autoSizeTextType="uniform"
                 android:padding="1dp"
+                android:text="1999"
                 android:textColor="@color/text"
-                android:textSize="22sp" />
+                android:textSize="22sp"
+                app:autoSizeTextType="uniform" />
 
 
             <TextView
@@ -161,11 +161,11 @@
                 android:layout_weight="1"
                 android:background="@color/background"
                 android:gravity="center"
-                android:text="1999"
-                app:autoSizeTextType="uniform"
                 android:padding="1dp"
+                android:text="1999"
                 android:textColor="@color/text"
-                android:textSize="22sp" />
+                android:textSize="22sp"
+                app:autoSizeTextType="uniform" />
 
 
             <TextView
@@ -175,11 +175,11 @@
                 android:layout_weight="1"
                 android:background="@color/background"
                 android:gravity="center"
-                android:text="1999"
-                app:autoSizeTextType="uniform"
                 android:padding="1dp"
+                android:text="1999"
                 android:textColor="@color/text"
-                android:textSize="22sp" />
+                android:textSize="22sp"
+                app:autoSizeTextType="uniform" />
 
 
             <TextView
@@ -189,11 +189,11 @@
                 android:layout_weight="1"
                 android:background="@color/background"
                 android:gravity="center"
-                android:text="1999"
-                app:autoSizeTextType="uniform"
                 android:padding="1dp"
+                android:text="1999"
                 android:textColor="@color/text"
-                android:textSize="22sp" />
+                android:textSize="22sp"
+                app:autoSizeTextType="uniform" />
 
 
             <TextView
@@ -203,11 +203,11 @@
                 android:layout_weight="1"
                 android:background="@color/background"
                 android:gravity="center"
-                android:text="1999"
-                app:autoSizeTextType="uniform"
                 android:padding="1dp"
+                android:text="1999"
                 android:textColor="@color/text"
-                android:textSize="22sp" />
+                android:textSize="22sp"
+                app:autoSizeTextType="uniform" />
 
 
             <TextView
@@ -217,11 +217,11 @@
                 android:layout_weight="1"
                 android:background="@color/background"
                 android:gravity="center"
-                android:text="1999"
-                app:autoSizeTextType="uniform"
                 android:padding="1dp"
+                android:text="1999"
                 android:textColor="@color/text"
-                android:textSize="22sp" />
+                android:textSize="22sp"
+                app:autoSizeTextType="uniform" />
 
 
             <TextView
@@ -231,11 +231,11 @@
                 android:layout_weight="1"
                 android:background="@color/background"
                 android:gravity="center"
-                android:text="1999"
-                app:autoSizeTextType="uniform"
                 android:padding="1dp"
+                android:text="1999"
                 android:textColor="@color/text"
-                android:textSize="22sp" />
+                android:textSize="22sp"
+                app:autoSizeTextType="uniform" />
 
             <TextView
                 android:id="@+id/yearStart_plus8"
@@ -244,11 +244,11 @@
                 android:layout_weight="1"
                 android:background="@color/background"
                 android:gravity="center"
-                android:text="1999"
-                app:autoSizeTextType="uniform"
                 android:padding="1dp"
+                android:text="1999"
                 android:textColor="@color/text"
-                android:textSize="22sp" />
+                android:textSize="22sp"
+                app:autoSizeTextType="uniform" />
 
 
             <TextView
@@ -258,11 +258,11 @@
                 android:layout_weight="1"
                 android:background="@color/background"
                 android:gravity="center"
-                android:text="1999"
-                app:autoSizeTextType="uniform"
                 android:padding="1dp"
+                android:text="1999"
                 android:textColor="@color/text"
-                android:textSize="22sp" />
+                android:textSize="22sp"
+                app:autoSizeTextType="uniform" />
 
 
             <TextView
@@ -272,11 +272,11 @@
                 android:layout_weight="1"
                 android:background="@color/background"
                 android:gravity="center"
-                android:text="1999"
-                app:autoSizeTextType="uniform"
                 android:padding="1dp"
+                android:text="1999"
                 android:textColor="@color/text"
-                android:textSize="22sp" />
+                android:textSize="22sp"
+                app:autoSizeTextType="uniform" />
 
 
             <TextView
@@ -286,11 +286,11 @@
                 android:layout_weight="1"
                 android:background="@color/background"
                 android:gravity="center"
-                android:text="1999"
-                app:autoSizeTextType="uniform"
                 android:padding="1dp"
+                android:text="1999"
                 android:textColor="@color/text"
-                android:textSize="22sp" />
+                android:textSize="22sp"
+                app:autoSizeTextType="uniform" />
 
 
             <TextView
@@ -300,11 +300,11 @@
                 android:layout_weight="1"
                 android:background="@color/background"
                 android:gravity="center"
-                android:text="1999"
-                app:autoSizeTextType="uniform"
                 android:padding="1dp"
+                android:text="1999"
                 android:textColor="@color/text"
-                android:textSize="22sp" />
+                android:textSize="22sp"
+                app:autoSizeTextType="uniform" />
 
 
             <TextView
@@ -314,11 +314,11 @@
                 android:layout_weight="1"
                 android:background="@color/background"
                 android:gravity="center"
-                android:text="1999"
-                app:autoSizeTextType="uniform"
                 android:padding="1dp"
+                android:text="1999"
                 android:textColor="@color/text"
-                android:textSize="22sp" />
+                android:textSize="22sp"
+                app:autoSizeTextType="uniform" />
 
 
             <TextView
@@ -328,11 +328,11 @@
                 android:layout_weight="1"
                 android:background="@color/background"
                 android:gravity="center"
-                android:text="1999"
-                app:autoSizeTextType="uniform"
                 android:padding="1dp"
+                android:text="1999"
                 android:textColor="@color/text"
-                android:textSize="22sp" />
+                android:textSize="22sp"
+                app:autoSizeTextType="uniform" />
 
 
             <TextView
@@ -342,11 +342,11 @@
                 android:layout_weight="1"
                 android:background="@color/background"
                 android:gravity="center"
-                android:text="1999"
-                app:autoSizeTextType="uniform"
                 android:padding="1dp"
+                android:text="1999"
                 android:textColor="@color/text"
-                android:textSize="22sp" />
+                android:textSize="22sp"
+                app:autoSizeTextType="uniform" />
 
 
             <TextView
@@ -356,11 +356,11 @@
                 android:layout_weight="1"
                 android:background="@color/background"
                 android:gravity="center"
-                android:text="1999"
-                app:autoSizeTextType="uniform"
                 android:padding="1dp"
+                android:text="1999"
                 android:textColor="@color/text"
-                android:textSize="22sp" />
+                android:textSize="22sp"
+                app:autoSizeTextType="uniform" />
 
         </LinearLayout>
 
@@ -377,7 +377,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.87" />
+        app:layout_constraintGuide_percent="0.85" />
 
     <Button
         android:id="@+id/buttonNextQuestion"
@@ -449,7 +449,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center"
-        android:padding="8dp"
+        android:padding="6dp"
         android:text="30"
         android:textAlignment="center"
         android:textStyle="bold"
@@ -458,6 +458,20 @@
         app:layout_constraintEnd_toStartOf="@+id/buttonGuessYear"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/buttonGuessYear" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.89" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.96" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

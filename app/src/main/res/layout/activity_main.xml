@@ -121,6 +121,7 @@
             android:layout_weight="1.5"
             android:background="@drawable/buttons"
             android:text="@string/about_game"
+            android:onClick="credits"
             android:textColor="#FFFFFF"
             android:textSize="18sp" />
 

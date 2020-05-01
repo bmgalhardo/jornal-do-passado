@@ -49,8 +49,8 @@ public class ScoreBoardActivity extends AppCompatActivity {
         for (int i = 0; i < 5; i++) {
             TableRow row = new TableRow(this);
             row.setLayoutParams(new TableLayout.LayoutParams(
-                    TableLayout.LayoutParams.FILL_PARENT,
-                    TableLayout.LayoutParams.FILL_PARENT, 1.0f));
+                    TableLayout.LayoutParams.MATCH_PARENT,
+                    TableLayout.LayoutParams.MATCH_PARENT, 1.0f));
 
             if (i % 2 == 0) row.setBackgroundColor(alternateColor);
 
@@ -80,8 +80,8 @@ public class ScoreBoardActivity extends AppCompatActivity {
                 else tv.setText(score_item);
 
                 tv.setGravity(Gravity.CENTER);
+                tv.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT,1));;
                 TextViewCompat.setAutoSizeTextTypeWithDefaults(tv, TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM);
-                tv.setPadding(1, 1, 1, 1);
 
                 row.addView(tv);
             }
