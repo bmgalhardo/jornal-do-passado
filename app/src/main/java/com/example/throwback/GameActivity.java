@@ -1,5 +1,7 @@
 package com.example.throwback;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
@@ -125,6 +127,10 @@ public class GameActivity extends AppCompatActivity {
 
         progressBar.getProgressDrawable().setColorFilter(col, PorterDuff.Mode.SRC_IN);
 
+        // points received view
+        TextView tv =  findViewById(R.id.tv_points);
+        tv.setVisibility(View.INVISIBLE);
+
         fillWithNewQuestion();
 
     }
@@ -135,6 +141,9 @@ public class GameActivity extends AppCompatActivity {
         yearGuess = 0;
 
         guessing = true;
+
+        TextView tv_pts =  findViewById(R.id.tv_points);
+        tv_pts.animate().cancel();
 
         Button buttonGuessYear = findViewById(R.id.buttonGuessYear);
         buttonGuessYear.setVisibility(View.VISIBLE);
@@ -312,9 +321,32 @@ public class GameActivity extends AppCompatActivity {
         TextView points = findViewById(R.id.points);
         points.setText(Integer.toString(currentPoints));
 
+        // trigger points animation
+        if (thisPoints != 0) animateText((TextView) findViewById(R.id.tv_points), thisPoints);
+
+
         // endgame: triggers scores
         if ((totalAnswers == 10 && gameType == GameType.DEFAULT) ||
                 (gauntletLevel < 1 && gameType == GameType.SUDDEN_DEATH)) buttonNextQuestion.setText("Ver Pontuação");
+    }
+
+    private void animateText(final TextView tv, int thisPoints){
+
+        tv.setText("+"+thisPoints);
+        tv.setVisibility(View.VISIBLE);
+        tv.animate()
+                .setDuration(2*1000)
+                .translationY(-tv.getHeight())
+                .alpha(0)
+                .setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        super.onAnimationEnd(animation);
+                        tv.setVisibility(View.INVISIBLE);
+                        tv.setTranslationY(0);
+                        tv.setAlpha(1);
+                    }
+                });
     }
 
     public void getNextQuestion(View view){
