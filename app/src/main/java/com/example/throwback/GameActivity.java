@@ -327,7 +327,7 @@ public class GameActivity extends AppCompatActivity {
 
         // endgame: triggers scores
         if ((totalAnswers == 10 && gameType == GameType.DEFAULT) ||
-                (gauntletLevel < 1 && gameType == GameType.SUDDEN_DEATH)) buttonNextQuestion.setText("Ver Pontuação");
+                (gauntletLevel < 1 && gameType == GameType.SUDDEN_DEATH)) buttonNextQuestion.setText("Pontuação");
     }
 
     private void animateText(final TextView tv, int thisPoints){

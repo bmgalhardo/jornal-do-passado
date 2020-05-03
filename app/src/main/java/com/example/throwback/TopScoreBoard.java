@@ -62,7 +62,8 @@ public class TopScoreBoard extends AppCompatActivity {
                 tv.setText(elements[j]);
                 tv.setGravity(Gravity.CENTER);
                 tv.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT,1));
-                TextViewCompat.setAutoSizeTextTypeWithDefaults(tv, TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM);
+                tv.setTextSize(14);
+//                TextViewCompat.setAutoSizeTextTypeWithDefaults(tv, TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM);
                 tv.setPadding(1, 1, 1, 1);
                 if (i == 0) {
                     tv.setTypeface(null, Typeface.BOLD);

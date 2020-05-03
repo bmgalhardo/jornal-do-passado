@@ -80,8 +80,9 @@ public class ScoreBoardActivity extends AppCompatActivity {
                 else tv.setText(score_item);
 
                 tv.setGravity(Gravity.CENTER);
-                tv.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT,1));;
-                TextViewCompat.setAutoSizeTextTypeWithDefaults(tv, TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM);
+                tv.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT,1));
+                tv.setTextSize(14);
+//                TextViewCompat.setAutoSizeTextTypeWithDefaults(tv, TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM);
 
                 row.addView(tv);
             }
@@ -98,7 +99,7 @@ public class ScoreBoardActivity extends AppCompatActivity {
 
         String currentString = sharedPreferences.getString(keyString, null);
         String newString =  new ScoresManager(currentString).addNewElement(score);
-        myEdit.putString(keyString, newString.toString());
+        myEdit.putString(keyString, newString);
         myEdit.apply();
     }
 

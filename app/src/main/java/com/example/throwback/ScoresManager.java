@@ -57,7 +57,9 @@ public class ScoresManager {
         Collections.sort(scores, new Comparator<Score>() {
             @Override
             public int compare(Score o1, Score o2) {
-                return o2.getScore().compareTo(o1.getScore());
+                Integer int1 = Integer.valueOf(o1.getScore());
+                Integer int2 = Integer.valueOf(o2.getScore());
+                return int2.compareTo(int1);
             }
         });
 
