@@ -35,7 +35,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     //Database Version
     private static final String DATABASE_NAME = "arquivopt.db";
 
-    //Table Name
+    //Table Namef
     private static final String TABLE_NAME = "news_data";
 
     //Table Fields
@@ -83,9 +83,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         boolean checkdb = false;
         try {
-            String myPath = context.getDatabasePath(DATABASE_NAME).toString();
-            File dbfile = new File(myPath);
-            checkdb = dbfile.exists();
+            database = this.getReadableDatabase();
+            checkdb = this.getNewsByYear(2012, 1).size() == 1;
         } catch(SQLiteException e) {
             System.out.println("Database doesn't exist");
         }
@@ -96,7 +95,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         //Open your local db as the input stream
         InputStream myinput = context.getAssets().open(DATABASE_NAME);
 
-        File outfile = new File(context.getDatabasePath(DATABASE_NAME).toString());
+        SQLiteDatabase database = this.getWritableDatabase();
+        String filePath = database.getPath();
+        database.close();
+
+        File outfile = new File(filePath);
         outfile.setWritable(true);
 
         // Open the empty db as the output stream
@@ -117,8 +120,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public void opendatabase() throws SQLException {
         //Open the database
-        String mypath = context.getDatabasePath(DATABASE_NAME).toString();
-        database = SQLiteDatabase.openDatabase(mypath, null, SQLiteDatabase.OPEN_READWRITE);
+        database = this.getWritableDatabase();
     }
 
     public synchronized void close() {

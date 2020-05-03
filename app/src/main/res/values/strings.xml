@@ -13,16 +13,20 @@
     <string name="next_question">Próxima</string>
     <string name="menu">Menu</string>
     <string name="scores">Pontuações</string>
-    <string name="credits_text"><b>Como Jogar</b>\nO objectivo do jogo é que tente adivinhar o ano no qual as três notícias
-   apresentadas decorreram. Para isso é só escolher umas das datas apresentadas à direita do
-   ecrã. Caso acerte ganha o total de 6 pontos. À medida que o palpite se afasta da resposta
-   correcta o número de pontos diminui. No Modo Torre, tem um número de tentativas disponíveis
+    <string name="how_to_play_title">Como Jogar</string>
+    <string name="how_to_play_text">
+        O objectivo do jogo é que tente adivinhar o ano no qual as três notícias
+   apresentadas decorreram.\n\nPara isso é só escolher umas das datas apresentadas à direita do
+   ecrã. Caso acerte ganha o total de 6 pontos.À medida que o palpite se afasta da resposta
+   correcta o número de pontos diminui.\n\nNo Modo Torre, tem um número de tentativas disponíveis
    variado que vai diminuindo consoante as respostas são falhadas e volta a aumentar se
-   a resposta for correcta (ou próxima). Tente ver o quão longe consegue chegar!\n
-   \n<b>Créditos</b>\nAplicação feita no contexto da competição arquivo.pt\n\nTodas as notícias apresentadas são
-   retiradas do arquivo.pt, um repositório de paginas de internet arquivadas desde 1996.
-   Em particular as notícias apresentadas são provenientes das versões em arquivo dos sites do
-   publico.pt e expresso.pt\n\nA todos os que jogaram a aplicação e nos providenciaram as suas
+   a resposta for correcta (ou próxima). Tente ver o quão longe consegue chegar
+    </string>
+    <string name="credits_title">Créditos</string>
+    <string name="credits_text">Aplicação feita no contexto da competição <b>arquivo.pt</b>\n\nTodas as notícias apresentadas são
+   retiradas do <b>arquivo.pt</b>, um repositório de paginas de internet arquivadas desde 1996.
+   Em particular as notícias apresentadas são provenientes das versões em arquivo do site do
+   <b>publico.pt</b>\n\nA todos os que jogaram a aplicação e nos providenciaram as suas
    opiniões, muito obrigado por nos ajudarem a melhorar o produto.\n\nOs dados de pontuação são
    apenas guardados localmente. Nenhuma informação é enviada para qualquer repositório central.
     </string>
