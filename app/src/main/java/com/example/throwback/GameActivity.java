@@ -28,7 +28,7 @@ public class GameActivity extends AppCompatActivity {
     public static final Integer[] TEXT_FIELDS_QUESTIONS = {R.id.question1, R.id.question2,
             R.id.question3};
 
-    public static int MIN_YEAR = 1998;
+    public static int MIN_YEAR = 2001;
     public static int MAX_YEAR = 2020;
 
     public static int CURRENT_LEVEL;
