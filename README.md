@@ -1,3 +1,6 @@
+![](https://img.shields.io/badge/platform-android-green)
+![](https://img.shields.io/github/license/bmgalhardo/jornal-do-passado)
+
 # Jornal do Passado
 
 
